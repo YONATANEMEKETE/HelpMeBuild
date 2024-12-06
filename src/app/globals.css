@@ -33,6 +33,15 @@ body {
     --chart-4: 43 74% 66%;
     --chart-5: 27 87% 67%;
     --radius: 0.5rem;
+
+    /* mystyles */
+    --mybg: 0 0% 100%;
+    --mybglight: 0 0% 95%;
+    --mytext: 273 26% 7%;
+    --mytextlight: 0 0% 27%;
+    --myaccent: 229 75% 53%;
+    --myaccentlight: 225 82% 58%;
+    --myaccentdark: 232 69% 48%;
   }
   .dark {
     --background: 240 10% 3.9%;
