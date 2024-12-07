@@ -30,18 +30,15 @@ const Footer = () => {
           <Link
             href={'https://github.com/YONATANEMEKETE/SnapBuild'}
             target="_blank"
-            className="flex items-center gap-x-4 cursor-pointer"
+            className="grid place-content-center cursor-pointer size-full"
           >
             <Image
               src={githublogo}
               alt="github logo"
               className={`object-contain ${
-                state === 'expanded' ? 'size-6' : 'size-8'
+                state === 'expanded' ? 'size-8' : 'size-8'
               }`}
             />
-            <p className="text-sm font-body font-semibold underline">
-              Github repository
-            </p>
           </Link>
         </SidebarMenuButton>
       </SidebarMenuItem>
