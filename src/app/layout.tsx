@@ -18,6 +18,7 @@ const monaSans = Mona_Sans({
   subsets: ['latin'],
   variable: '--font-body',
   weight: ['200', '300', '400', '500', '600', '700', '800', '900'],
+  fallback: ['Arial', 'sans-serif'],
 });
 
 const genos = Genos({
