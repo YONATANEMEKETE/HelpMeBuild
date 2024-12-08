@@ -35,6 +35,7 @@ import {
 } from '../ui/dialog';
 import CreateForm from '../dashboard/home/CreateForm';
 import useProjects from '@/stores/use-projects';
+import CreateProjectForm from '../dashboard/home/CreateProjectForm';
 
 const ProjectsNav = () => {
   const { isMobile } = useSidebar();
@@ -105,7 +106,7 @@ const ProjectsNav = () => {
               Create a Project
             </DialogTitle>
           </DialogHeader>
-          <CreateForm />
+          <CreateProjectForm />
         </DialogContent>
       </Dialog>
     </SidebarGroup>

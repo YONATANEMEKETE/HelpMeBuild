@@ -8,6 +8,7 @@ import {
   DialogTrigger,
 } from '@/components/ui/dialog';
 import CreateForm from './CreateForm';
+import CreateProjectForm from './CreateProjectForm';
 
 const CreateProject = () => {
   return (
@@ -33,7 +34,7 @@ const CreateProject = () => {
               Create a Project
             </DialogTitle>
           </DialogHeader>
-          <CreateForm />
+          <CreateProjectForm />
         </DialogContent>
       </Dialog>
     </div>

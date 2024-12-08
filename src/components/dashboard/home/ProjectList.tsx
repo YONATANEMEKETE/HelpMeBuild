@@ -14,6 +14,7 @@ import { Plus } from 'lucide-react';
 import ProjectCard from './ProjectCard';
 import { projectcard } from '@/constant/constant';
 import ProjectsListClient from './ProjectsListClient';
+import CreateProjectForm from './CreateProjectForm';
 
 const ProjectList = () => {
   return (
@@ -39,7 +40,7 @@ const ProjectList = () => {
                   Create a Project
                 </DialogTitle>
               </DialogHeader>
-              <CreateForm />
+              <CreateProjectForm />
             </DialogContent>
           </Dialog>
         </div>
