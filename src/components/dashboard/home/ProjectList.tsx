@@ -1,3 +1,5 @@
+'use client';
+
 import { Button } from '@/components/ui/button';
 import {
   Dialog,
@@ -11,6 +13,7 @@ import CreateForm from './CreateForm';
 import { Plus } from 'lucide-react';
 import ProjectCard from './ProjectCard';
 import { projectcard } from '@/constant/constant';
+import ProjectsListClient from './ProjectsListClient';
 
 const ProjectList = () => {
   return (
@@ -30,8 +33,8 @@ const ProjectList = () => {
                 Create Project
               </Button>
             </DialogTrigger>
-            <DialogContent className="max-w-[400px] space-y-4 ">
-              <DialogHeader>
+            <DialogContent className="max-w-[400px]">
+              <DialogHeader className="mb-4">
                 <DialogTitle className="text-mytext font-body font-semibold">
                   Create a Project
                 </DialogTitle>
@@ -41,11 +44,7 @@ const ProjectList = () => {
           </Dialog>
         </div>
       </div>
-      <div className="flex grow bg-mybglight/60 flex-wrap gap-x-5 p-4 rounded-lg">
-        {projectcard.map((project) => (
-          <ProjectCard key={project.name} project={project} />
-        ))}
-      </div>
+      <ProjectsListClient />
     </section>
   );
 };

@@ -6,10 +6,11 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 import { Separator } from '@/components/ui/separator';
+import { ProjectState } from '@/stores/use-projects';
 import { MoreVertical, Trash2 } from 'lucide-react';
 import React from 'react';
 
-const ProjectCard = ({ project }: { project: any }) => {
+const ProjectCard = ({ project }: { project: ProjectState }) => {
   return (
     <div className="bg-mybg rounded-md overflow-clip grow max-w-[300px] w-[300px] h-fit border-x-2 border-b border-mybglight cursor-pointer">
       <div
@@ -65,7 +66,7 @@ const ProjectCard = ({ project }: { project: any }) => {
             </div>
           </div>
           <p className="text-end text-xs text-mytextlight font-body font-medium">
-            {project.dueDate}
+            {project.createdAt}
           </p>
         </div>
       </div>

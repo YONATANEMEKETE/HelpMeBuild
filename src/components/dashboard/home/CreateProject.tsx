@@ -27,8 +27,8 @@ const CreateProject = () => {
             Create Project
           </Button>
         </DialogTrigger>
-        <DialogContent className="max-w-[400px] space-y-4 ">
-          <DialogHeader>
+        <DialogContent className="max-w-[400px]">
+          <DialogHeader className="mb-4">
             <DialogTitle className="text-mytext font-body font-semibold">
               Create a Project
             </DialogTitle>

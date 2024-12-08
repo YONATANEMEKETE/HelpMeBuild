@@ -34,9 +34,11 @@ import {
   DialogTrigger,
 } from '../ui/dialog';
 import CreateForm from '../dashboard/home/CreateForm';
+import useProjects from '@/stores/use-projects';
 
 const ProjectsNav = () => {
   const { isMobile } = useSidebar();
+  const { projects, removeProject } = useProjects();
 
   return (
     <SidebarGroup className="group-data-[collapsible=icon]:hidden space-y-1">
@@ -44,15 +46,15 @@ const ProjectsNav = () => {
         Projects
       </SidebarGroupLabel>
       <SidebarMenu>
-        {projectcard.map((project) => (
+        {projects.map((project) => (
           <SidebarMenuItem
             className="text-mytextlight hover:text-mytext"
             key={project.name}
           >
-            <SidebarMenuButton className="px-4" tooltip={project.name} asChild>
+            <SidebarMenuButton className="px-4" asChild>
               <Link
                 className="flex items-center gap-x-2 size-full"
-                href={project.name}
+                href={`/dashboard/${project.name}`}
               >
                 <div
                   style={{ backgroundColor: project.color }}
@@ -97,8 +99,8 @@ const ProjectsNav = () => {
             <p className="text-xs font-semibold font-body">New Project</p>
           </Button>
         </DialogTrigger>
-        <DialogContent className="max-w-[400px] space-y-4">
-          <DialogHeader>
+        <DialogContent className="max-w-[400px]">
+          <DialogHeader className="mb-4">
             <DialogTitle className="text-mytext font-body font-semibold">
               Create a Project
             </DialogTitle>
