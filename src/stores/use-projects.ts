@@ -5,8 +5,8 @@ export interface ProjectState {
   name: string;
   color: string;
   description: string;
-  techs: string[];
-  createdAt: string;
+  techs?: string[];
+  createdAt?: string;
 }
 
 interface storeState {

@@ -17,6 +17,8 @@ import { Button } from '@/components/ui/button';
 import { DialogClose } from '@/components/ui/dialog';
 import { Textarea } from '@/components/ui/textarea';
 import Appearance from './Appearance';
+import useProjects from '@/stores/use-projects';
+import useColor from '@/stores/use-color';
 
 const formSchema = z.object({
   name: z
@@ -37,9 +39,17 @@ const CreateProjectForm = () => {
       description: '',
     },
   });
+  const { addProject } = useProjects();
+  const { color } = useColor();
 
   const handleFormSubmit = (data: z.infer<typeof formSchema>) => {
     console.log(data);
+    const project = {
+      name: data.name,
+      color: color,
+      description: data.description,
+    };
+    addProject(project);
   };
 
   return (

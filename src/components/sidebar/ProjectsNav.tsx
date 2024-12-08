@@ -78,7 +78,10 @@ const ProjectsNav = () => {
                 side={isMobile ? 'bottom' : 'right'}
                 align={isMobile ? 'end' : 'start'}
               >
-                <DropdownMenuItem className="cursor-pointer text-mytextlight hover:text-mytext hover:bg-mybglight">
+                <DropdownMenuItem
+                  onClick={() => removeProject(project.name)}
+                  className="cursor-pointer text-mytextlight hover:text-mytext hover:bg-mybglight"
+                >
                   <Trash2 className="" />
                   <span className="text-sm font-body font-semibold">
                     Delete Project
