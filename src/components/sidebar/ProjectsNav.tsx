@@ -17,7 +17,7 @@ import {
   SidebarMenuItem,
   useSidebar,
 } from '../ui/sidebar';
-import { sampleProjects } from '@/constant/constant';
+import { projectcard, sampleProjects } from '@/constant/constant';
 import Link from 'next/link';
 import {
   DropdownMenu,
@@ -44,7 +44,7 @@ const ProjectsNav = () => {
         Projects
       </SidebarGroupLabel>
       <SidebarMenu>
-        {sampleProjects.map((project) => (
+        {projectcard.map((project) => (
           <SidebarMenuItem
             className="text-mytextlight hover:text-mytext"
             key={project.name}
@@ -52,9 +52,12 @@ const ProjectsNav = () => {
             <SidebarMenuButton className="px-4" tooltip={project.name} asChild>
               <Link
                 className="flex items-center gap-x-2 size-full"
-                href={project.link}
+                href={project.name}
               >
-                <div className="size-3 rounded-sm bg-blue-700"></div>
+                <div
+                  style={{ backgroundColor: project.color }}
+                  className="size-3 rounded-sm bg-blue-700"
+                ></div>
                 <span className="text-xs font-body font-semibold">
                   {project.name}
                 </span>
