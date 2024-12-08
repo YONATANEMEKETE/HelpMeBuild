@@ -6,7 +6,7 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from '../ui/sidebar';
-import { navs } from '@/constant/navs';
+import { navs } from '@/constant/constant';
 import Link from 'next/link';
 
 const MainNavs = () => {

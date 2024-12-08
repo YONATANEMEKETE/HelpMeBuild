@@ -31,4 +31,6 @@ const sampleProjects = [
   },
 ];
 
-export { sampleProjects, navs };
+const appearances = ['#21211f', '#e32999', '#5729e3', '#29e386', '#e1f0e9'];
+
+export { sampleProjects, navs, appearances };

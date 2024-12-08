@@ -17,7 +17,7 @@ import {
   SidebarMenuItem,
   useSidebar,
 } from '../ui/sidebar';
-import { sampleProjects } from '@/constant/navs';
+import { sampleProjects } from '@/constant/constant';
 import Link from 'next/link';
 import {
   DropdownMenu,
@@ -26,6 +26,14 @@ import {
   DropdownMenuTrigger,
 } from '../ui/dropdown-menu';
 import { Button } from '../ui/button';
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from '../ui/dialog';
+import CreateForm from '../dashboard/home/CreateForm';
 
 const ProjectsNav = () => {
   const { isMobile } = useSidebar();
@@ -75,13 +83,26 @@ const ProjectsNav = () => {
           </SidebarMenuItem>
         ))}
       </SidebarMenu>
-      <Button
-        variant={'ghost'}
-        className="flex items-center justify-start gap-x-2 text-mytextlight hover:text-mytext"
-      >
-        <Plus />
-        <p className="text-xs font-semibold font-body">New Project</p>
-      </Button>
+
+      <Dialog>
+        <DialogTrigger asChild>
+          <Button
+            variant={'ghost'}
+            className="flex items-center justify-start gap-x-2 text-mytextlight hover:text-mytext"
+          >
+            <Plus />
+            <p className="text-xs font-semibold font-body">New Project</p>
+          </Button>
+        </DialogTrigger>
+        <DialogContent className="max-w-[400px] space-y-4">
+          <DialogHeader>
+            <DialogTitle className="text-mytext font-body font-semibold">
+              Create a Project
+            </DialogTitle>
+          </DialogHeader>
+          <CreateForm />
+        </DialogContent>
+      </Dialog>
     </SidebarGroup>
   );
 };

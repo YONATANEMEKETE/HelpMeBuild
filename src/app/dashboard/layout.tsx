@@ -1,13 +1,5 @@
 import DashbaordSidebar from '@/components/sidebar/AppSidebar';
 import {
-  Breadcrumb,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  BreadcrumbList,
-  BreadcrumbPage,
-  BreadcrumbSeparator,
-} from '@/components/ui/breadcrumb';
-import {
   SidebarInset,
   SidebarProvider,
   SidebarTrigger,
