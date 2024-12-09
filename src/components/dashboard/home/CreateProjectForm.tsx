@@ -30,8 +30,8 @@ const formSchema = z.object({
     .max(20),
   description: z
     .string({ message: 'Description is required' })
-    .min(20, { message: 'Description must be at least 20 characters' })
-    .max(100),
+    .min(50, { message: 'Description must be at least 50 characters' })
+    .max(200, { message: 'Description must be at most 200 characters' }),
 });
 
 interface Props {
@@ -51,10 +51,11 @@ const CreateProjectForm = ({ onFormSubmited }: Props) => {
 
   const handleFormSubmit = (data: z.infer<typeof formSchema>) => {
     const date = createdAt();
+    const appearance = color.length < 7 ? '#21211f' : color;
 
     const project = {
       name: data.name,
-      color: color,
+      color: appearance,
       description: data.description,
       createdAt: date,
     };

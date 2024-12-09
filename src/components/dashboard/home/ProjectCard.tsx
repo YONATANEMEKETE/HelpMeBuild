@@ -15,7 +15,7 @@ const ProjectCard = ({ project }: { project: ProjectState }) => {
   const { removeProject } = useProjects();
 
   return (
-    <div className="bg-mybg rounded-md overflow-clip  max-w-[300px] min-w-[300px] w-[300px] h-fit border-x-2 border-b border-mybglight cursor-pointer">
+    <div className="bg-mybg rounded-md overflow-clip  max-w-[300px] min-w-[300px] w-[300px] flex-auto h-fit border-x-2 border-b border-mybglight cursor-pointer">
       <div
         style={{ backgroundColor: project.color }}
         className="w-full h-1 bg-myaccentlight"
@@ -54,7 +54,7 @@ const ProjectCard = ({ project }: { project: ProjectState }) => {
                 </DropdownMenuContent>
               </DropdownMenu>
             </div>
-            <p className="text-xs text-mytextlight font-body font-medium max-h-12 line-clamp-2 min-h-10">
+            <p className="text-xs text-mytextlight font-body font-medium max-h-12 line-clamp-2 ">
               {project.description}
             </p>
           </div>
