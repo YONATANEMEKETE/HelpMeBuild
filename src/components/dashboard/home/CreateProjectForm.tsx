@@ -20,6 +20,7 @@ import Appearance from './Appearance';
 import useProjects from '@/stores/use-projects';
 import useColor from '@/stores/use-color';
 import { createdAt } from '@/lib/date';
+import { useDialog } from '@/hooks/use-dialog';
 
 const formSchema = z.object({
   name: z
@@ -32,7 +33,11 @@ const formSchema = z.object({
     .max(100),
 });
 
-const CreateProjectForm = () => {
+interface Props {
+  onFormSubmited: () => void;
+}
+
+const CreateProjectForm = ({ onFormSubmited }: Props) => {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -53,6 +58,7 @@ const CreateProjectForm = () => {
       createdAt: date,
     };
     addProject(project);
+    onFormSubmited();
   };
 
   return (

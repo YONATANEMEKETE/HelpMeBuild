@@ -3,7 +3,7 @@ import ProjectList from '@/components/dashboard/home/ProjectList';
 import React from 'react';
 
 const Home = () => {
-  return <Empty />;
+  return <ProjectList />;
 };
 
 export default Home;

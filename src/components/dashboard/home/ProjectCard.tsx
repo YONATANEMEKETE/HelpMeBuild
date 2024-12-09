@@ -6,13 +6,15 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 import { Separator } from '@/components/ui/separator';
-import { ProjectState } from '@/stores/use-projects';
+import useProjects, { ProjectState } from '@/stores/use-projects';
 import { MoreVertical, Trash2 } from 'lucide-react';
 import React from 'react';
 
 const ProjectCard = ({ project }: { project: ProjectState }) => {
+  const { removeProject } = useProjects();
+
   return (
-    <div className="bg-mybg rounded-md overflow-clip grow max-w-[300px] w-[300px] h-fit border-x-2 border-b border-mybglight cursor-pointer">
+    <div className="bg-mybg rounded-md overflow-clip  max-w-[300px] min-w-[300px] w-[300px] h-fit border-x-2 border-b border-mybglight cursor-pointer">
       <div
         style={{ backgroundColor: project.color }}
         className="w-full h-1 bg-myaccentlight"
@@ -36,7 +38,10 @@ const ProjectCard = ({ project }: { project: ProjectState }) => {
                   side={'right'}
                   align={'start'}
                 >
-                  <DropdownMenuItem className="cursor-pointer text-mytextlight hover:text-mytext hover:bg-mybglight">
+                  <DropdownMenuItem
+                    onClick={() => removeProject(project.name)}
+                    className="cursor-pointer text-mytextlight hover:text-mytext hover:bg-mybglight"
+                  >
                     <Trash2 className="" />
                     <span className="text-sm font-body font-semibold">
                       Delete Project
@@ -45,14 +50,14 @@ const ProjectCard = ({ project }: { project: ProjectState }) => {
                 </DropdownMenuContent>
               </DropdownMenu>
             </div>
-            <p className="text-xs text-mytextlight font-body font-medium max-h-12 line-clamp-2">
+            <p className="text-xs text-mytextlight font-body font-medium max-h-12 line-clamp-2 min-h-10">
               {project.description}
             </p>
           </div>
           <div className="space-y-2 w-full">
             <Separator />
             <div className="flex items-center gap-1 flex-wrap">
-              {project.techs.map((item: any) => {
+              {project.techs?.map((item: any) => {
                 return (
                   <Badge
                     variant={'outline'}

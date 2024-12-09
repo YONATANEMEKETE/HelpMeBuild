@@ -36,10 +36,16 @@ import {
 import CreateForm from '../dashboard/home/CreateForm';
 import useProjects from '@/stores/use-projects';
 import CreateProjectForm from '../dashboard/home/CreateProjectForm';
+import { useDialog } from '@/hooks/use-dialog';
 
 const ProjectsNav = () => {
   const { isMobile } = useSidebar();
   const { projects, removeProject } = useProjects();
+  const { open, setOpen } = useDialog();
+
+  const handleDialogClose = () => {
+    setOpen(false);
+  };
 
   return (
     <SidebarGroup className="group-data-[collapsible=icon]:hidden space-y-1">
@@ -93,7 +99,7 @@ const ProjectsNav = () => {
         ))}
       </SidebarMenu>
 
-      <Dialog>
+      <Dialog open={open} onOpenChange={setOpen}>
         <DialogTrigger asChild>
           <Button
             variant={'ghost'}
@@ -109,7 +115,7 @@ const ProjectsNav = () => {
               Create a Project
             </DialogTitle>
           </DialogHeader>
-          <CreateProjectForm />
+          <CreateProjectForm onFormSubmited={handleDialogClose} />
         </DialogContent>
       </Dialog>
     </SidebarGroup>

@@ -1,3 +1,5 @@
+'use client';
+
 import { Button } from '@/components/ui/button';
 import React from 'react';
 import {
@@ -9,8 +11,15 @@ import {
 } from '@/components/ui/dialog';
 import CreateForm from './CreateForm';
 import CreateProjectForm from './CreateProjectForm';
+import { useDialog } from '@/hooks/use-dialog';
 
 const CreateProject = () => {
+  const { open, setOpen } = useDialog();
+
+  const handleDialogClose = () => {
+    setOpen(false);
+  };
+
   return (
     <div className="z-50 p-4 flex flex-col items-center gap-y-4">
       <div className="text-center">
@@ -22,7 +31,7 @@ const CreateProject = () => {
         </p>
       </div>
 
-      <Dialog>
+      <Dialog open={open} onOpenChange={setOpen}>
         <DialogTrigger asChild>
           <Button className="text-sm text-mybg font-body bg-myaccentdark hover:bg-myaccent active:bg-myaccentlight">
             Create Project
@@ -34,7 +43,7 @@ const CreateProject = () => {
               Create a Project
             </DialogTitle>
           </DialogHeader>
-          <CreateProjectForm />
+          <CreateProjectForm onFormSubmited={handleDialogClose} />
         </DialogContent>
       </Dialog>
     </div>

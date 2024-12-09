@@ -8,10 +8,12 @@ const ProjectsListClient = () => {
   const { projects } = useProjects();
 
   return (
-    <div className="flex grow bg-mybglight/60 flex-wrap gap-x-5 p-4 rounded-lg">
-      {projects.map((project) => (
-        <ProjectCard key={project.name} project={project} />
-      ))}
+    <div className="grow bg-mybglight/60  p-4 rounded-lg">
+      <div className="flex flex-wrap gap-5">
+        {projects.map((project) => (
+          <ProjectCard key={project.name} project={project} />
+        ))}
+      </div>
     </div>
   );
 };

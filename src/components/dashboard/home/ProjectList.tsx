@@ -15,8 +15,15 @@ import ProjectCard from './ProjectCard';
 import { projectcard } from '@/constant/constant';
 import ProjectsListClient from './ProjectsListClient';
 import CreateProjectForm from './CreateProjectForm';
+import { useDialog } from '@/hooks/use-dialog';
 
 const ProjectList = () => {
+  const { open, setOpen } = useDialog();
+
+  const handleDialogClose = () => {
+    setOpen(false);
+  };
+
   return (
     <section className="min-h-[93vh] px-10 pt-6 py-4 flex flex-col gap-y-4">
       <div className="pb-6 border-b">
@@ -27,7 +34,7 @@ const ProjectList = () => {
           <p className="text-2xl text-mytext font-body font-semibold">
             Projects
           </p>
-          <Dialog>
+          <Dialog open={open} onOpenChange={setOpen}>
             <DialogTrigger asChild>
               <Button className="flex items-center gap-x-2 text-sm text-mybg font-body bg-myaccentdark hover:bg-myaccent active:bg-myaccentlight">
                 <Plus />
@@ -40,7 +47,7 @@ const ProjectList = () => {
                   Create a Project
                 </DialogTitle>
               </DialogHeader>
-              <CreateProjectForm />
+              <CreateProjectForm onFormSubmited={handleDialogClose} />
             </DialogContent>
           </Dialog>
         </div>
