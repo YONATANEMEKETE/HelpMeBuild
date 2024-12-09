@@ -19,6 +19,7 @@ import { Textarea } from '@/components/ui/textarea';
 import Appearance from './Appearance';
 import useProjects from '@/stores/use-projects';
 import useColor from '@/stores/use-color';
+import { createdAt } from '@/lib/date';
 
 const formSchema = z.object({
   name: z
@@ -43,11 +44,13 @@ const CreateProjectForm = () => {
   const { color } = useColor();
 
   const handleFormSubmit = (data: z.infer<typeof formSchema>) => {
-    console.log(data);
+    const date = createdAt();
+
     const project = {
       name: data.name,
       color: color,
       description: data.description,
+      createdAt: date,
     };
     addProject(project);
   };
