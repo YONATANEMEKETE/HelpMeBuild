@@ -13,9 +13,9 @@ import CreateForm from './CreateForm';
 import { Plus } from 'lucide-react';
 import ProjectCard from './ProjectCard';
 import { projectcard } from '@/constant/constant';
-import ProjectsListClient from './ProjectsListClient';
 import CreateProjectForm from './CreateProjectForm';
 import { useDialog } from '@/hooks/use-dialog';
+import ProjectsListed from './ProjectsListed';
 
 const ProjectList = () => {
   const { open, setOpen } = useDialog();
@@ -52,7 +52,7 @@ const ProjectList = () => {
           </Dialog>
         </div>
       </div>
-      <ProjectsListClient />
+      <ProjectsListed />
     </section>
   );
 };

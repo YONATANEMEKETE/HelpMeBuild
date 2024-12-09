@@ -9,6 +9,7 @@ import { Separator } from '@/components/ui/separator';
 import useProjects, { ProjectState } from '@/stores/use-projects';
 import { MoreVertical, Trash2 } from 'lucide-react';
 import React from 'react';
+import { toast } from 'sonner';
 
 const ProjectCard = ({ project }: { project: ProjectState }) => {
   const { removeProject } = useProjects();
@@ -39,7 +40,10 @@ const ProjectCard = ({ project }: { project: ProjectState }) => {
                   align={'start'}
                 >
                   <DropdownMenuItem
-                    onClick={() => removeProject(project.name)}
+                    onClick={() => {
+                      removeProject(project.name);
+                      toast.success('Project Deleted Successfuly');
+                    }}
                     className="cursor-pointer text-mytextlight hover:text-mytext hover:bg-mybglight"
                   >
                     <Trash2 className="" />

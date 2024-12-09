@@ -21,6 +21,7 @@ import useProjects from '@/stores/use-projects';
 import useColor from '@/stores/use-color';
 import { createdAt } from '@/lib/date';
 import { useDialog } from '@/hooks/use-dialog';
+import { toast } from 'sonner';
 
 const formSchema = z.object({
   name: z
@@ -59,6 +60,7 @@ const CreateProjectForm = ({ onFormSubmited }: Props) => {
     };
     addProject(project);
     onFormSubmited();
+    toast.success('Project Created successfuly');
   };
 
   return (

@@ -37,6 +37,7 @@ import CreateForm from '../dashboard/home/CreateForm';
 import useProjects from '@/stores/use-projects';
 import CreateProjectForm from '../dashboard/home/CreateProjectForm';
 import { useDialog } from '@/hooks/use-dialog';
+import { toast } from 'sonner';
 
 const ProjectsNav = () => {
   const { isMobile } = useSidebar();
@@ -85,7 +86,10 @@ const ProjectsNav = () => {
                 align={isMobile ? 'end' : 'start'}
               >
                 <DropdownMenuItem
-                  onClick={() => removeProject(project.name)}
+                  onClick={() => {
+                    removeProject(project.name);
+                    toast.success('Project Deleted Successfuly');
+                  }}
                   className="cursor-pointer text-mytextlight hover:text-mytext hover:bg-mybglight"
                 >
                   <Trash2 className="" />

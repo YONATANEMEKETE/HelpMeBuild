@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import localFont from 'next/font/local';
 import { Mona_Sans, Genos } from 'next/font/google';
 import './globals.css';
+import { Toaster } from '@/components/ui/sonner';
 
 const geistSans = localFont({
   src: './fonts/GeistVF.woff',
@@ -43,6 +44,7 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} ${monaSans.variable} ${genos.variable} antialiased`}
       >
         {children}
+        <Toaster position="top-center" richColors closeButton />
       </body>
     </html>
   );

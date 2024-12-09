@@ -4,7 +4,7 @@ import React from 'react';
 import ProjectCard from './ProjectCard';
 import useProjects from '@/stores/use-projects';
 
-const ProjectsListClient = () => {
+const ProjectsListed = () => {
   const { projects } = useProjects();
 
   return (
@@ -18,4 +18,4 @@ const ProjectsListClient = () => {
   );
 };
 
-export default ProjectsListClient;
+export default ProjectsListed;
