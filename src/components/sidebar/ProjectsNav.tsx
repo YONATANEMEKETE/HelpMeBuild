@@ -66,7 +66,7 @@ const ProjectsNav = () => {
               <SidebarMenuButton className="px-4" asChild>
                 <Link
                   className="flex items-center gap-x-2 size-full"
-                  href={`/dashboard/${project.name}`}
+                  href={`/dashboard/projects/${project.name}`}
                 >
                   <div
                     style={{ backgroundColor: project.color }}

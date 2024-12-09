@@ -8,6 +8,7 @@ import {
 import { Separator } from '@/components/ui/separator';
 import useProjects, { ProjectState } from '@/stores/use-projects';
 import { MoreVertical, Trash2 } from 'lucide-react';
+import Link from 'next/link';
 import React from 'react';
 import { toast } from 'sonner';
 
@@ -15,7 +16,10 @@ const ProjectCard = ({ project }: { project: ProjectState }) => {
   const { removeProject } = useProjects();
 
   return (
-    <div className="bg-mybg rounded-md overflow-clip  max-w-[300px] min-w-[300px] w-[300px] flex-auto h-fit border-x-2 border-b border-mybglight cursor-pointer">
+    <Link
+      href={`/dashboard/projects/${project.name}`}
+      className="bg-mybg rounded-md overflow-clip  max-w-[300px] min-w-[300px] w-[300px] flex-auto h-fit border-x-2 border-b border-mybglight cursor-pointer"
+    >
       <div
         style={{ backgroundColor: project.color }}
         className="w-full h-1 bg-myaccentlight"
@@ -79,7 +83,7 @@ const ProjectCard = ({ project }: { project: ProjectState }) => {
           </p>
         </div>
       </div>
-    </div>
+    </Link>
   );
 };
 

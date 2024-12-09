@@ -18,19 +18,6 @@ const navs = [
   },
 ];
 
-const sampleProjects = [
-  {
-    name: 'QuickPrep',
-    color: 'blue',
-    link: '/dashboard/quickprep',
-  },
-  {
-    name: 'SnapBuild',
-    color: 'red',
-    link: '/dashboard/snapbuild',
-  },
-];
-
 const appearances = ['#21211f', '#e32999', '#5729e3', '#29e386', '#e1f0e9'];
 
 const projectcard = [
@@ -52,4 +39,23 @@ const projectcard = [
   },
 ];
 
-export { sampleProjects, navs, appearances, projectcard };
+const tabs = [
+  {
+    name: 'MVP',
+    link: 'mvp',
+  },
+  {
+    name: 'Visuals',
+    link: 'visuals',
+  },
+  {
+    name: 'TechStacks',
+    link: 'techstacks',
+  },
+  {
+    name: 'Milestones',
+    link: 'milestones',
+  },
+];
+
+export { navs, appearances, projectcard, tabs };
