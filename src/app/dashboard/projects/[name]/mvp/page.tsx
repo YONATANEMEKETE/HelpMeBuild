@@ -12,6 +12,7 @@ import {
 import { Plus } from 'lucide-react';
 import React, { useState } from 'react';
 import { useParams } from 'next/navigation';
+import FeaturesList from '@/components/dashboard/Projects/mvp/FeaturesList';
 
 const Mvp = () => {
   const params = useParams();
@@ -47,6 +48,7 @@ const Mvp = () => {
           </DialogContent>
         </Dialog>
       </div>
+      <FeaturesList projectName={name as string} />
     </section>
   );
 };

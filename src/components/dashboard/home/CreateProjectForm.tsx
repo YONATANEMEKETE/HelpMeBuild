@@ -58,6 +58,8 @@ const CreateProjectForm = ({ onFormSubmited }: Props) => {
       color: appearance,
       description: data.description,
       createdAt: date,
+      features: [],
+      techs: [],
     };
     addProject(project);
     onFormSubmited();

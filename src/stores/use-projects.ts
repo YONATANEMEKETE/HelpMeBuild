@@ -12,9 +12,9 @@ export interface ProjectState {
   name: string;
   color: string;
   description: string;
-  techs?: string[];
+  techs: string[] | [];
   createdAt: string;
-  features?: featureState[];
+  features: featureState[] | [];
 }
 
 interface storeState {
@@ -25,6 +25,7 @@ interface storeAction {
   addProject: (project: ProjectState) => void;
   removeProject: (projectName: string) => void;
   addFeature: (projectName: string, feature: featureState) => void;
+  removeFeature: (projectName: string, featureName: string) => void;
   reset: () => void;
 }
 
@@ -47,12 +48,27 @@ const useProjects = create<storeState & storeAction>()(
             if (project.name === projectName) {
               return {
                 ...project,
-                features: [...(project.features || []), feature],
+                features: [...project.features, feature],
               };
             }
             return project;
           }),
         })),
+      removeFeature: (projectName, featureName) => {
+        Set((state) => ({
+          projects: state.projects.map((project) => {
+            if (project.name === projectName) {
+              return {
+                ...project,
+                features: project.features.filter(
+                  (feature) => feature.name !== featureName
+                ),
+              };
+            }
+            return project;
+          }),
+        }));
+      },
     }),
     {
       name: 'ProjectStore',

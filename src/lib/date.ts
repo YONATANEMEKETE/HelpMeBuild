@@ -1,4 +1,4 @@
-export function createdAt(): string {
+export function createdAt(date?: number): string {
   const months = [
     'Jan',
     'Feb',
@@ -18,6 +18,7 @@ export function createdAt(): string {
   const day = currentDate.getDate();
   const month = months[currentDate.getMonth()];
   const year = currentDate.getFullYear();
+  const deadline = day + date!;
 
-  return `${month} ${day}, ${year}`;
+  return `${month} ${date ? deadline : day}, ${year}`;
 }

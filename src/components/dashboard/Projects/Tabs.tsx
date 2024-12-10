@@ -21,17 +21,19 @@ const Tabs = ({ project }: Props) => {
             href={`${tab.link}`}
             key={tab.name}
             className={`relative w-[100px] py-2 rounded-md text-sm ${
-              pathName.includes(tab.link) ? 'text-mytext' : 'text-mytextlight'
-            } hover:text-mytext font-body font-semibold cursor-pointer overflow-hidden`}
+              pathName.includes(tab.link)
+                ? 'text-mybg'
+                : 'text-mytextlight hover:text-mytext'
+            }  font-body font-semibold cursor-pointer overflow-hidden`}
           >
             {pathName.includes(tab.link) && (
-              <motion.div
+              <div
                 style={{
                   position: 'absolute',
                   inset: 0,
-                  backgroundColor: 'white',
                 }}
-              ></motion.div>
+                className="bg-myaccent"
+              ></div>
             )}
             <p className="z-20 relative text-center">{tab.name}</p>
           </Link>

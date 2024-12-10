@@ -19,11 +19,13 @@ import {
   SelectValue,
 } from '@/components/ui/select';
 import { Textarea } from '@/components/ui/textarea';
+import { createdAt } from '@/lib/date';
 import useProjects from '@/stores/use-projects';
 import { zodResolver } from '@hookform/resolvers/zod';
 import React from 'react';
 import { useForm } from 'react-hook-form';
-import { z } from 'zod';
+import { toast } from 'sonner';
+import { date, number, z } from 'zod';
 
 const featureSchema = z.object({
   name: z
@@ -54,14 +56,18 @@ const AddFeatureForm = ({ onFormSubmited, projectName }: Props) => {
   const { addFeature } = useProjects();
 
   const handleFormSubmit = (data: z.infer<typeof featureSchema>) => {
-    console.log(data);
+    const stringDay = data.duedate.charAt(0);
+    const day = Number(stringDay);
+    const dueDate = createdAt(day);
+
     const feature = {
       name: data.name,
       description: data.description,
-      dueDate: data.duedate,
+      dueDate: dueDate,
       implemented: false,
     };
     addFeature(projectName, feature);
+    toast.success('Feature Created successfuly');
 
     onFormSubmited();
   };
