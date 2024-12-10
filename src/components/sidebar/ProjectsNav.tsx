@@ -38,8 +38,10 @@ import CreateProjectForm from '../dashboard/home/CreateProjectForm';
 import { useDialog } from '@/hooks/use-dialog';
 import { toast } from 'sonner';
 import { Badge } from '../ui/badge';
+import { useRouter } from 'next/navigation';
 
 const ProjectsNav = () => {
+  const router = useRouter();
   const { isMobile } = useSidebar();
   const { projects, removeProject } = useProjects();
   const { open, setOpen } = useDialog();
@@ -92,6 +94,7 @@ const ProjectsNav = () => {
                     onClick={() => {
                       removeProject(project.name);
                       toast.success('Project Deleted Successfuly');
+                      router.push('/dashboard/home');
                     }}
                     className="cursor-pointer text-mytextlight hover:text-mytext hover:bg-mybglight"
                   >

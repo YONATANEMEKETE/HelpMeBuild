@@ -9,6 +9,7 @@ import { Separator } from '@/components/ui/separator';
 import useProjects, { ProjectState } from '@/stores/use-projects';
 import { MoreVertical, Trash2 } from 'lucide-react';
 import Link from 'next/link';
+import { redirect } from 'next/navigation';
 import React from 'react';
 import { toast } from 'sonner';
 
