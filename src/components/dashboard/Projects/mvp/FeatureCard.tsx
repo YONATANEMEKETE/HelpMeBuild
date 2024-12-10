@@ -25,12 +25,24 @@ interface Props {
 }
 
 const FeatureCard = ({ feature, projectName }: Props) => {
-  const { removeFeature } = useProjects();
+  const { removeFeature, checkFeature, unCheckFeature } = useProjects();
 
   return (
     <Sheet>
-      <div className="flex items-center gap-x-4 w-full px-4 py-2 border rounded-xl bg-mybglight cursor-pointer shadow-sm">
+      <div
+        className={`flex items-center gap-x-4 w-full px-4 py-2 border rounded-lg bg-mybglight cursor-pointer shadow-sm ${
+          feature.implemented && 'opacity-70'
+        }`}
+      >
         <Checkbox
+          checked={feature.implemented}
+          onCheckedChange={(checked) => {
+            if (checked) {
+              checkFeature(projectName, feature.name);
+            } else if (!checked) {
+              unCheckFeature(projectName, feature.name);
+            }
+          }}
           className={cn(
             'data-[state=checked]:bg-myaccent border-mytextlight rounded-full data-[state=checked]:border-myaccent'
           )}
@@ -38,7 +50,11 @@ const FeatureCard = ({ feature, projectName }: Props) => {
         <SheetTrigger asChild>
           <div className="flex items-center justify-between grow">
             <div className="flex items-center gap-x-12">
-              <p className="text-sm text-mytext/90 font-body font-semibold">
+              <p
+                className={`text-sm text-mytext/90 font-body font-semibold ${
+                  feature.implemented && 'line-through'
+                } `}
+              >
                 {feature.name}
               </p>
               <div className="flex items-center gap-x-4 text-xs text-mytextlight font-body font-semibold">
@@ -58,7 +74,7 @@ const FeatureCard = ({ feature, projectName }: Props) => {
                 <DropdownMenuItem
                   onClick={() => {
                     removeFeature(projectName, feature.name);
-                    toast.success('Project Deleted Successfuly');
+                    toast.success('Feature Deleted Successfuly');
                   }}
                   className="cursor-pointer text-mytextlight hover:text-mytext hover:bg-mybglight"
                 >
@@ -84,8 +100,7 @@ const FeatureCard = ({ feature, projectName }: Props) => {
               <p className="text-sm text-mytextlight font-body font-semibold">
                 Status
               </p>
-              <InProgress />
-              {/* <Completed /> */}
+              {feature.implemented ? <Completed /> : <InProgress />}
             </div>
             <div className="flex items-center gap-x-4">
               <p className="text-sm text-mytextlight font-body font-semibold">

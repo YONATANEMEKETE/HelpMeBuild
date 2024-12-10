@@ -1,3 +1,5 @@
+import Projects from '@/app/dashboard/projects/page';
+import { set } from 'zod';
 import { create } from 'zustand';
 import { createJSONStorage, persist } from 'zustand/middleware';
 
@@ -26,6 +28,8 @@ interface storeAction {
   removeProject: (projectName: string) => void;
   addFeature: (projectName: string, feature: featureState) => void;
   removeFeature: (projectName: string, featureName: string) => void;
+  checkFeature: (projectName: string, featureName: string) => void;
+  unCheckFeature: (projectName: string, featureName: string) => void;
   reset: () => void;
 }
 
@@ -63,6 +67,48 @@ const useProjects = create<storeState & storeAction>()(
                 features: project.features.filter(
                   (feature) => feature.name !== featureName
                 ),
+              };
+            }
+            return project;
+          }),
+        }));
+      },
+      checkFeature: (projectName, featureName) => {
+        Set((state) => ({
+          projects: state.projects.map((project) => {
+            if (project.name === projectName) {
+              return {
+                ...project,
+                features: project.features.map((feature) => {
+                  if (feature.name === featureName) {
+                    return {
+                      ...feature,
+                      implemented: true,
+                    };
+                  }
+                  return feature;
+                }),
+              };
+            }
+            return project;
+          }),
+        }));
+      },
+      unCheckFeature: (projectName, featureName) => {
+        Set((state) => ({
+          projects: state.projects.map((project) => {
+            if (project.name === projectName) {
+              return {
+                ...project,
+                features: project.features.map((feature) => {
+                  if (feature.name === featureName) {
+                    return {
+                      ...feature,
+                      implemented: false,
+                    };
+                  }
+                  return feature;
+                }),
               };
             }
             return project;
