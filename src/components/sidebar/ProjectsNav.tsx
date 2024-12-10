@@ -38,10 +38,11 @@ import CreateProjectForm from '../dashboard/home/CreateProjectForm';
 import { useDialog } from '@/hooks/use-dialog';
 import { toast } from 'sonner';
 import { Badge } from '../ui/badge';
-import { useRouter } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 
 const ProjectsNav = () => {
   const router = useRouter();
+  const pathname = usePathname();
   const { isMobile } = useSidebar();
   const { projects, removeProject } = useProjects();
   const { open, setOpen } = useDialog();
@@ -64,7 +65,12 @@ const ProjectsNav = () => {
               className="text-mytextlight hover:text-mytext"
               key={project.name}
             >
-              <SidebarMenuButton className="px-4" asChild>
+              <SidebarMenuButton
+                className={`px-4 ${
+                  pathname.includes(project.name) && 'bg-mybglight'
+                }`}
+                asChild
+              >
                 <Link
                   className="flex items-center gap-x-2 size-full"
                   href={`/dashboard/projects/${project.name}/mvp`}

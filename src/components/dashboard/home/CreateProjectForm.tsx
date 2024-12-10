@@ -52,9 +52,10 @@ const CreateProjectForm = ({ onFormSubmited }: Props) => {
   const handleFormSubmit = (data: z.infer<typeof formSchema>) => {
     const date = createdAt();
     const appearance = color.length < 7 ? '#21211f' : color;
+    const formatedName = data.name.replace(/ /g, '-');
 
     const project = {
-      name: data.name,
+      name: formatedName,
       color: appearance,
       description: data.description,
       createdAt: date,
