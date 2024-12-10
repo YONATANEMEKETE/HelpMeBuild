@@ -17,7 +17,6 @@ import {
   SidebarMenuItem,
   useSidebar,
 } from '../ui/sidebar';
-import { projectcard, sampleProjects } from '@/constant/constant';
 import Link from 'next/link';
 import {
   DropdownMenu,
@@ -66,7 +65,7 @@ const ProjectsNav = () => {
               <SidebarMenuButton className="px-4" asChild>
                 <Link
                   className="flex items-center gap-x-2 size-full"
-                  href={`/dashboard/projects/${project.name}`}
+                  href={`/dashboard/projects/${project.name}/mvp`}
                 >
                   <div
                     style={{ backgroundColor: project.color }}

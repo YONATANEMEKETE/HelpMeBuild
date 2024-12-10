@@ -4,6 +4,7 @@ import { tabs } from '@/constant/constant';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import React from 'react';
+import { motion } from 'motion/react';
 
 interface Props {
   project: string;
@@ -19,11 +20,20 @@ const Tabs = ({ project }: Props) => {
           <Link
             href={`${tab.link}`}
             key={tab.name}
-            className={`${
-              pathName.includes(tab.link) ? 'bg-mybg text-mytext' : ''
-            } px-4 py-2 rounded-md text-sm text-mytextlight hover:text-mytext font-body font-semibold cursor-pointer`}
+            className={`relative w-[100px] py-2 rounded-md text-sm ${
+              pathName.includes(tab.link) ? 'text-mytext' : 'text-mytextlight'
+            } hover:text-mytext font-body font-semibold cursor-pointer overflow-hidden`}
           >
-            {tab.name}
+            {pathName.includes(tab.link) && (
+              <motion.div
+                style={{
+                  position: 'absolute',
+                  inset: 0,
+                  backgroundColor: 'white',
+                }}
+              ></motion.div>
+            )}
+            <p className="z-20 relative text-center">{tab.name}</p>
           </Link>
         );
       })}

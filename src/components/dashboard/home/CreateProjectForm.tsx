@@ -97,7 +97,7 @@ const CreateProjectForm = ({ onFormSubmited }: Props) => {
             render={({ field }) => (
               <FormItem>
                 <FormLabel className="text-sm text-mytext font-body font-semibold">
-                  Project Name
+                  Project Desciption
                 </FormLabel>
                 <FormControl>
                   <Textarea

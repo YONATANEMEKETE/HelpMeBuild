@@ -17,7 +17,7 @@ const ProjectCard = ({ project }: { project: ProjectState }) => {
 
   return (
     <Link
-      href={`/dashboard/projects/${project.name}`}
+      href={`/dashboard/projects/${project.name}/mvp`}
       className="bg-mybg rounded-md overflow-clip  max-w-[300px] min-w-[300px] w-[300px] flex-auto h-fit border-x-2 border-b border-mybglight cursor-pointer"
     >
       <div

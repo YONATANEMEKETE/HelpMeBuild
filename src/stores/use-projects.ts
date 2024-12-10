@@ -1,12 +1,20 @@
 import { create } from 'zustand';
 import { createJSONStorage, persist } from 'zustand/middleware';
 
+export interface featureState {
+  name: string;
+  description: string;
+  dueDate: string;
+  implemented: boolean;
+}
+
 export interface ProjectState {
   name: string;
   color: string;
   description: string;
   techs?: string[];
   createdAt: string;
+  features?: featureState[];
 }
 
 interface storeState {
@@ -16,6 +24,7 @@ interface storeState {
 interface storeAction {
   addProject: (project: ProjectState) => void;
   removeProject: (projectName: string) => void;
+  addFeature: (projectName: string, feature: featureState) => void;
   reset: () => void;
 }
 
@@ -32,6 +41,18 @@ const useProjects = create<storeState & storeAction>()(
           ),
         })),
       reset: () => Set(() => ({ projects: [] })),
+      addFeature: (projectName, feature) =>
+        Set((state) => ({
+          projects: state.projects.map((project) => {
+            if (project.name === projectName) {
+              return {
+                ...project,
+                features: [...(project.features || []), feature],
+              };
+            }
+            return project;
+          }),
+        })),
     }),
     {
       name: 'ProjectStore',
