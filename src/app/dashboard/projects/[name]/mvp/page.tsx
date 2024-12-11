@@ -13,17 +13,22 @@ import { Plus } from 'lucide-react';
 import React, { useState } from 'react';
 import { useParams } from 'next/navigation';
 import FeaturesList from '@/components/dashboard/Projects/mvp/FeaturesList';
+import NoFeatures from '@/components/dashboard/Projects/mvp/NoFeatures';
+import useProjects from '@/stores/use-projects';
 
 const Mvp = () => {
   const params = useParams();
   const { name } = params;
   const [open, setOpen] = useState<boolean>(false);
+  const { projects } = useProjects();
+  const currentProject = projects.find((project) => project.name === name);
+  const features = currentProject?.features;
   const handleDialogClose = () => {
     setOpen(false);
   };
 
   return (
-    <section className="flex flex-col gap-4">
+    <section className="flex flex-col gap-4 grow">
       <div className="flex items-center justify-between px-2">
         <p className="text-base text-mytextlight font-body font-semibold">
           Features
@@ -48,7 +53,11 @@ const Mvp = () => {
           </DialogContent>
         </Dialog>
       </div>
-      <FeaturesList projectName={name as string} />
+      {features?.length !== 0 ? (
+        <FeaturesList projectName={name as string} />
+      ) : (
+        <NoFeatures />
+      )}
     </section>
   );
 };
