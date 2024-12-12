@@ -21,10 +21,7 @@ const AddVisualsForm = ({ closeDialog }: { closeDialog: () => void }) => {
       const uploadedFiles = files.map(async (file) => {
         await pinata.upload.file(file).key(keyData.JWT);
       });
-      // files.forEach(async (file) => {
-      //   const uploadedFile = await pinata.upload.file(file).key(keyData.JWT);
-      //   return uploadedFile;
-      // });
+
       if (uploadedFiles) {
         toast.success('Files uploaded successfuly');
       } else {

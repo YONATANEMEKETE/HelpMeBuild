@@ -1,25 +1,11 @@
-'use client';
-
 import DotPattern from '@/components/DotPatterns';
-import { Button } from '@/components/ui/button';
-import {
-  Dialog,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from '@/components/ui/dialog';
+
 import { Plus, UploadCloud } from 'lucide-react';
 import React from 'react';
 import AddVisualsForm from './AddVisualsForm';
+import UploadDialog from './uploadDialog';
 
 const NoVisuals = () => {
-  const [open, setOpen] = React.useState<boolean>(false);
-
-  const handleDialogClose = () => {
-    setOpen(false);
-  };
-
   return (
     <div className="h-full flex items-center justify-center gap-y-6 relative">
       <DotPattern />
@@ -36,22 +22,7 @@ const NoVisuals = () => {
             </p>
           </div>
         </div>
-        <Dialog open={open} onOpenChange={setOpen}>
-          <DialogTrigger asChild>
-            <Button className="text-sm text-mybg font-body bg-myaccentdark hover:bg-myaccent active:bg-myaccentlight flex items-center gap-2">
-              <Plus size={16} />
-              Add Visuals
-            </Button>
-          </DialogTrigger>
-          <DialogContent className="max-w-[500px]">
-            <DialogHeader className="p-1">
-              <DialogTitle className="text-mytext font-body font-semibold">
-                Add Visuals
-              </DialogTitle>
-            </DialogHeader>
-            <AddVisualsForm closeDialog={handleDialogClose} />
-          </DialogContent>
-        </Dialog>
+        <UploadDialog />
       </div>
     </div>
   );
