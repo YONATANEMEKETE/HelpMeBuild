@@ -12,7 +12,11 @@ import { Plus } from 'lucide-react';
 import React from 'react';
 import AddVisualsForm from './AddVisualsForm';
 
-const UploadDialog = () => {
+interface Props {
+  buttonOutline?: boolean;
+}
+
+const UploadDialog = ({ buttonOutline }: Props) => {
   const [open, setOpen] = React.useState(false);
 
   const handleDialogClose = () => {
@@ -22,9 +26,16 @@ const UploadDialog = () => {
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
-        <Button className="text-sm text-mybg font-body bg-myaccentdark hover:bg-myaccent active:bg-myaccentlight flex items-center gap-2">
+        <Button
+          variant={buttonOutline ? 'outline' : 'default'}
+          className={`text-sm  font-body ${
+            buttonOutline
+              ? 'text-myaccentdark hover:text-myaccent active:text-myaccentlight hover:bg-myaccentlight/10 px-6'
+              : 'bg-myaccentdark hover:bg-myaccent active:bg-myaccentlight text-mybg'
+          }  flex items-center gap-2`}
+        >
           <Plus size={16} />
-          Add Visuals
+          {!buttonOutline && 'Add Visuals'}
         </Button>
       </DialogTrigger>
       <DialogContent className="max-w-[500px]">

@@ -5,7 +5,6 @@ import React, { useCallback, useState } from 'react';
 import { useDropzone } from 'react-dropzone';
 import imagepik from '../../../../../public/image_4942906.png';
 import Image from 'next/image';
-import { promise, set } from 'zod';
 import { pinata } from '@/lib/pinata';
 import { toast } from 'sonner';
 import { useParams } from 'next/navigation';
@@ -27,15 +26,16 @@ const AddVisualsForm = ({ closeDialog }: { closeDialog: () => void }) => {
       files.forEach(async (file) => {
         const uploded = await pinata.upload.file(file).key(keyData.JWT);
         const url = await pinata.gateways.convert(uploded.IpfsHash);
-        setUploadedFilesUrls((prevUrls) => [...prevUrls, url]);
+        console.log(url);
+        addVisuals(name as string, url);
       });
 
-      addVisuals(name as string, uploadedFilesUrls!);
-      toast.success('Files uploaded and inserted successfuly');
+      toast.success(`visuals uploaded successfuly`);
+      closeDialog();
       setUploading(false);
     } catch (error) {
-      console.log('Error uploading file:', error);
-      toast.error('Error uploading file');
+      console.log('Error uploading visuals:', error);
+      toast.error('Error uploading visuals');
       setUploading(false);
     }
   };
