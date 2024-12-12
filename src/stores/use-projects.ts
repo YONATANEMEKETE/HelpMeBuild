@@ -1,5 +1,3 @@
-import Projects from '@/app/dashboard/projects/page';
-import { set } from 'zod';
 import { create } from 'zustand';
 import { createJSONStorage, persist } from 'zustand/middleware';
 
@@ -17,6 +15,7 @@ export interface ProjectState {
   techs: string[] | [];
   createdAt: string;
   features: featureState[] | [];
+  visuals: string[] | [];
 }
 
 interface storeState {
@@ -30,6 +29,7 @@ interface storeAction {
   removeFeature: (projectName: string, featureName: string) => void;
   checkFeature: (projectName: string, featureName: string) => void;
   unCheckFeature: (projectName: string, featureName: string) => void;
+  addVisuals: (projectName: string, visuals: string[]) => void;
   reset: () => void;
 }
 
@@ -109,6 +109,19 @@ const useProjects = create<storeState & storeAction>()(
                   }
                   return feature;
                 }),
+              };
+            }
+            return project;
+          }),
+        }));
+      },
+      addVisuals: (projectName, visuals) => {
+        Set((state) => ({
+          projects: state.projects.map((project) => {
+            if (project.name === projectName) {
+              return {
+                ...project,
+                visuals: [...project.visuals, ...visuals],
               };
             }
             return project;

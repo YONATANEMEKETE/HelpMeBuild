@@ -5,28 +5,33 @@ import React, { useCallback, useState } from 'react';
 import { useDropzone } from 'react-dropzone';
 import imagepik from '../../../../../public/image_4942906.png';
 import Image from 'next/image';
-import { set } from 'zod';
+import { promise, set } from 'zod';
 import { pinata } from '@/lib/pinata';
 import { toast } from 'sonner';
+import { useParams } from 'next/navigation';
+import useProjects from '@/stores/use-projects';
 
 const AddVisualsForm = ({ closeDialog }: { closeDialog: () => void }) => {
   const [files, setFiles] = useState<File[]>([]);
+  const [uploadedFilesUrls, setUploadedFilesUrls] = useState<string[]>([]);
   const [uploading, setUploading] = useState(false);
+  const params = useParams();
+  const { name } = params;
+  const { addVisuals, projects } = useProjects();
 
   const handleFileUpload = async () => {
     try {
       setUploading(true);
       const keyRequest = await fetch('/api/key');
       const keyData = await keyRequest.json();
-      const uploadedFiles = files.map(async (file) => {
-        await pinata.upload.file(file).key(keyData.JWT);
+      files.forEach(async (file) => {
+        const uploded = await pinata.upload.file(file).key(keyData.JWT);
+        const url = await pinata.gateways.convert(uploded.IpfsHash);
+        setUploadedFilesUrls((prevUrls) => [...prevUrls, url]);
       });
 
-      if (uploadedFiles) {
-        toast.success('Files uploaded successfuly');
-      } else {
-        toast.error('Error uploading files');
-      }
+      addVisuals(name as string, uploadedFilesUrls!);
+      toast.success('Files uploaded and inserted successfuly');
       setUploading(false);
     } catch (error) {
       console.log('Error uploading file:', error);
