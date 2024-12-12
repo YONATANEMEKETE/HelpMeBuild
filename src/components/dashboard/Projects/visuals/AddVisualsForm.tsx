@@ -5,9 +5,38 @@ import React, { useCallback, useState } from 'react';
 import { useDropzone } from 'react-dropzone';
 import imagepik from '../../../../../public/image_4942906.png';
 import Image from 'next/image';
+import { set } from 'zod';
+import { pinata } from '@/lib/pinata';
+import { toast } from 'sonner';
 
-const AddVisualsForm = () => {
+const AddVisualsForm = ({ closeDialog }: { closeDialog: () => void }) => {
   const [files, setFiles] = useState<File[]>([]);
+  const [uploading, setUploading] = useState(false);
+
+  const handleFileUpload = async () => {
+    try {
+      setUploading(true);
+      const keyRequest = await fetch('/api/key');
+      const keyData = await keyRequest.json();
+      const uploadedFiles = files.map(async (file) => {
+        await pinata.upload.file(file).key(keyData.JWT);
+      });
+      // files.forEach(async (file) => {
+      //   const uploadedFile = await pinata.upload.file(file).key(keyData.JWT);
+      //   return uploadedFile;
+      // });
+      if (uploadedFiles) {
+        toast.success('Files uploaded successfuly');
+      } else {
+        toast.error('Error uploading files');
+      }
+      setUploading(false);
+    } catch (error) {
+      console.log('Error uploading file:', error);
+      toast.error('Error uploading file');
+      setUploading(false);
+    }
+  };
 
   const onDrop = useCallback(
     (acceptedFiles: File[]) => {
@@ -64,10 +93,12 @@ const AddVisualsForm = () => {
       )}
       {files.length > 0 && (
         <Button
+          onClick={handleFileUpload}
+          disabled={uploading}
           type="submit"
           className="text-sm text-mybg font-body  bg-myaccentdark hover:bg-myaccent w-full"
         >
-          Add Visuals
+          {uploading ? 'Uploading...' : 'Upload'}
         </Button>
       )}
     </div>

@@ -1,3 +1,5 @@
+'use client';
+
 import DotPattern from '@/components/DotPatterns';
 import { Button } from '@/components/ui/button';
 import {
@@ -12,6 +14,12 @@ import React from 'react';
 import AddVisualsForm from './AddVisualsForm';
 
 const NoVisuals = () => {
+  const [open, setOpen] = React.useState<boolean>(false);
+
+  const handleDialogClose = () => {
+    setOpen(false);
+  };
+
   return (
     <div className="h-full flex items-center justify-center gap-y-6 relative">
       <DotPattern />
@@ -28,7 +36,7 @@ const NoVisuals = () => {
             </p>
           </div>
         </div>
-        <Dialog>
+        <Dialog open={open} onOpenChange={setOpen}>
           <DialogTrigger asChild>
             <Button className="text-sm text-mybg font-body bg-myaccentdark hover:bg-myaccent active:bg-myaccentlight flex items-center gap-2">
               <Plus size={16} />
@@ -41,7 +49,7 @@ const NoVisuals = () => {
                 Add Visuals
               </DialogTitle>
             </DialogHeader>
-            <AddVisualsForm />
+            <AddVisualsForm closeDialog={handleDialogClose} />
           </DialogContent>
         </Dialog>
       </div>
