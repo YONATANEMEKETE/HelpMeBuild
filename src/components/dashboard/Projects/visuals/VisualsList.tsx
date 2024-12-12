@@ -18,7 +18,7 @@ const VisualsList = () => {
         <UploadDialog buttonOutline />
       </div>
       <div className="flex flex-col gap-y-4">
-        {visuals?.map((visual) => (
+        {visuals?.map((visual, index) => (
           <VisualCard key={visual} url={visual} projectName={name as string} />
         ))}
       </div>

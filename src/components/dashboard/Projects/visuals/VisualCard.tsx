@@ -15,7 +15,7 @@ const VisualCard = ({ url, projectName }: Props) => {
   const { deleteVisuals } = useProjects();
 
   return (
-    <div className="group relative overflow-clip w-full aspect-[21/9] rounded-xl">
+    <div className="group relative overflow-clip w-full aspect-[20/10] rounded-xl">
       <Image
         src={url}
         alt="visual"

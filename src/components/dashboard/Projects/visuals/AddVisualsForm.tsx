@@ -12,11 +12,12 @@ import useProjects from '@/stores/use-projects';
 
 const AddVisualsForm = ({ closeDialog }: { closeDialog: () => void }) => {
   const [files, setFiles] = useState<File[]>([]);
-  const [uploadedFilesUrls, setUploadedFilesUrls] = useState<string[]>([]);
+
   const [uploading, setUploading] = useState(false);
   const params = useParams();
   const { name } = params;
   const { addVisuals, projects } = useProjects();
+  const currentProject = projects.find((project) => project.name === name);
 
   const handleFileUpload = async () => {
     try {
@@ -26,8 +27,14 @@ const AddVisualsForm = ({ closeDialog }: { closeDialog: () => void }) => {
       files.forEach(async (file) => {
         const uploded = await pinata.upload.file(file).key(keyData.JWT);
         const url = await pinata.gateways.convert(uploded.IpfsHash);
-        console.log(url);
-        addVisuals(name as string, url);
+        const alreadyExists = currentProject?.visuals.find(
+          (visual) => visual === url
+        );
+        if (alreadyExists) {
+          toast.error(`visual already exists`);
+        } else {
+          addVisuals(name as string, url);
+        }
       });
 
       toast.success(`visuals uploaded successfuly`);
