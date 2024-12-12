@@ -56,7 +56,15 @@ const AddVisualsForm = ({ closeDialog }: { closeDialog: () => void }) => {
     },
     [files]
   );
-  const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
+  const { getRootProps, getInputProps, isDragActive } = useDropzone({
+    onDrop,
+    onDropRejected(fileRejections, event) {
+      toast.error('unsupported file type');
+    },
+    accept: {
+      'image/*': [],
+    },
+  });
 
   return (
     <div className="space-y-4">
