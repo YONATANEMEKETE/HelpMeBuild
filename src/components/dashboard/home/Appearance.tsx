@@ -40,9 +40,7 @@ const Appearance = () => {
                   backgroundColor: appearance,
                 }}
                 className={`size-5 cursor-pointer ${
-                  selected === appearance
-                    ? `ring-2 ring-mytext ring-offset-1 ${ring}`
-                    : ''
+                  selected === appearance ? `ring-2 ring-offset-1 ${ring}` : ''
                 }    rounded-full`}
               ></div>
             );

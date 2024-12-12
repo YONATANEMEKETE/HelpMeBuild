@@ -23,7 +23,7 @@ const Tabs = ({ project }: Props) => {
             className={`relative w-[100px] py-2 rounded-md text-sm ${
               pathName.includes(tab.link)
                 ? 'text-mybg'
-                : 'text-mytextlight hover:text-mytext'
+                : 'text-mytextlight hover:text-mytext hover:bg-myaccentlight/10'
             }  font-body font-semibold cursor-pointer overflow-hidden`}
           >
             {pathName.includes(tab.link) && (
@@ -32,7 +32,7 @@ const Tabs = ({ project }: Props) => {
                   position: 'absolute',
                   inset: 0,
                 }}
-                className="bg-myaccent"
+                className="bg-myaccentlight/50"
               ></div>
             )}
             <p className="z-20 relative text-center">{tab.name}</p>

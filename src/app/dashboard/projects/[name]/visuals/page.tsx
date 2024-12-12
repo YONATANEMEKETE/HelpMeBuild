@@ -1,7 +1,12 @@
+import NoVisuals from '@/components/dashboard/Projects/visuals/NoVisuals';
 import React from 'react';
 
 const Visuals = () => {
-  return <div>Visuals</div>;
+  return (
+    <section className="grow">
+      <NoVisuals />
+    </section>
+  );
 };
 
 export default Visuals;
