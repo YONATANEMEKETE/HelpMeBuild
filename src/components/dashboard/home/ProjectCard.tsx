@@ -17,10 +17,7 @@ const ProjectCard = ({ project }: { project: ProjectState }) => {
   const { removeProject } = useProjects();
 
   return (
-    <Link
-      href={`/dashboard/projects/${project.name}/mvp`}
-      className="bg-mybg rounded-md overflow-clip  max-w-[300px] min-w-[300px] w-[300px] flex-auto h-fit border-x-2 border-b border-mybglight cursor-pointer"
-    >
+    <div className="bg-mybg rounded-md overflow-clip  max-w-[300px] min-w-[300px] w-[300px] flex-auto h-fit border-x-2 border-b border-mybglight cursor-pointer">
       <div
         style={{ backgroundColor: project.color }}
         className="w-full h-1 bg-myaccentlight"
@@ -59,11 +56,17 @@ const ProjectCard = ({ project }: { project: ProjectState }) => {
                 </DropdownMenuContent>
               </DropdownMenu>
             </div>
-            <p className="text-xs text-mytextlight font-body font-medium max-h-12 line-clamp-2 ">
+            <Link
+              href={`/dashboard/projects/${project.name}/mvp`}
+              className="text-xs text-mytextlight font-body font-medium max-h-12 line-clamp-2 "
+            >
               {project.description}
-            </p>
+            </Link>
           </div>
-          <div className="space-y-2 w-full">
+          <Link
+            href={`/dashboard/projects/${project.name}/mvp`}
+            className="space-y-2 w-full"
+          >
             <Separator />
             <div className="flex items-center gap-1 flex-wrap">
               {project.techs?.map((item: any) => {
@@ -78,13 +81,16 @@ const ProjectCard = ({ project }: { project: ProjectState }) => {
                 );
               })}
             </div>
-          </div>
-          <p className="text-end text-xs text-mytextlight font-body font-medium">
+          </Link>
+          <Link
+            href={`/dashboard/projects/${project.name}/mvp`}
+            className="text-end text-xs text-mytextlight font-body font-medium"
+          >
             {project.createdAt}
-          </p>
+          </Link>
         </div>
       </div>
-    </Link>
+    </div>
   );
 };
 
