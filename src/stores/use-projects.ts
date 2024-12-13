@@ -4,7 +4,7 @@ import { createJSONStorage, persist } from 'zustand/middleware';
 export interface featureState {
   name: string;
   description: string;
-  dueDate: string;
+  dueDate: Date;
   implemented: boolean;
 }
 

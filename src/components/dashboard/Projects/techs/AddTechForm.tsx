@@ -14,8 +14,13 @@ interface Props {
 }
 
 const AddTechForm = ({ projectName, closeDialog }: Props) => {
-  const [selected, setSelected] = useState<string[]>([]);
-  const { addTechs } = useProjects();
+  const { addTechs, projects } = useProjects();
+  const currentProject = projects.find(
+    (project) => project.name === projectName
+  );
+  const [selected, setSelected] = useState<string[]>(
+    currentProject?.techs || []
+  );
 
   const handleSelect = (name: string) => {
     if (selected.includes(name)) {
@@ -26,9 +31,16 @@ const AddTechForm = ({ projectName, closeDialog }: Props) => {
   };
 
   const handleTechStore = () => {
-    addTechs(projectName, selected);
-    toast.success(`${selected.length} techs added successfuly`);
-    closeDialog();
+    const alreadyExists = currentProject?.techs.find((t) => {
+      return selected.includes(t);
+    });
+    if (alreadyExists) {
+      toast.error('you are trying to add a tech that already exists');
+    } else {
+      addTechs(projectName, selected);
+      toast.success(`${selected.length} techs added successfuly`);
+      closeDialog();
+    }
   };
 
   return (

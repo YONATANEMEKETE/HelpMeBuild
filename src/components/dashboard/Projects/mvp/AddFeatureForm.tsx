@@ -1,6 +1,7 @@
 'use client';
 
 import { Button } from '@/components/ui/button';
+import { Calendar } from '@/components/ui/calendar';
 import {
   Form,
   FormControl,
@@ -11,6 +12,11 @@ import {
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
 import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from '@/components/ui/popover';
+import {
   Select,
   SelectContent,
   SelectGroup,
@@ -20,8 +26,11 @@ import {
 } from '@/components/ui/select';
 import { Textarea } from '@/components/ui/textarea';
 import { createdAt } from '@/lib/date';
+import { cn } from '@/lib/utils';
 import useProjects from '@/stores/use-projects';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { format } from 'date-fns';
+import { CalendarIcon } from 'lucide-react';
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { toast } from 'sonner';
@@ -36,7 +45,7 @@ const featureSchema = z.object({
     .string()
     .min(20, { message: 'Description must be at least 20 characters' })
     .max(100),
-  duedate: z.string(),
+  duedate: z.date({ required_error: 'Due date is required' }),
 });
 
 interface Props {
@@ -50,20 +59,20 @@ const AddFeatureForm = ({ onFormSubmited, projectName }: Props) => {
     defaultValues: {
       name: '',
       description: '',
-      duedate: '',
+      duedate: new Date(),
     },
   });
   const { addFeature } = useProjects();
 
   const handleFormSubmit = (data: z.infer<typeof featureSchema>) => {
-    const stringDay = data.duedate.charAt(0);
-    const day = Number(stringDay);
-    const dueDate = createdAt(day);
+    // const stringDay = data.duedate.charAt(0);
+    // const day = Number(stringDay);
+    // const dueDate = createdAt(day);
 
     const feature = {
       name: data.name,
       description: data.description,
-      dueDate: dueDate,
+      dueDate: data.duedate,
       implemented: false,
     };
     addFeature(projectName, feature);
@@ -122,55 +131,39 @@ const AddFeatureForm = ({ onFormSubmited, projectName }: Props) => {
             control={form.control}
             name="duedate"
             render={({ field }) => (
-              <FormItem>
+              <FormItem className="flex flex-col gap-1">
                 <FormLabel className="text-sm text-mytext font-body font-semibold pl-1">
                   Due Date
                 </FormLabel>
-                <Select
-                  onValueChange={field.onChange}
-                  defaultValue={field.value}
-                >
-                  <FormControl>
-                    <SelectTrigger>
-                      <SelectValue
-                        className="placeholder:text-xs placeholder:text-mytextlight placeholder:font-medium placeholder:font-body text-xs text-mytextlight font-body font-semibold"
-                        placeholder="Select a due date"
-                      />
-                    </SelectTrigger>
-                  </FormControl>
-                  <SelectContent>
-                    <SelectItem
-                      className="text-xs text-mytextlight font-body font-semibold"
-                      value="1 Day"
-                    >
-                      1 Day
-                    </SelectItem>
-                    <SelectItem
-                      className="text-xs text-mytextlight font-body font-semibold"
-                      value="2 Days"
-                    >
-                      2 Days
-                    </SelectItem>
-                    <SelectItem
-                      className="text-xs text-mytextlight font-body font-semibold"
-                      value="3 Days"
-                    >
-                      3 Days
-                    </SelectItem>
-                    <SelectItem
-                      className="text-xs text-mytextlight font-body font-semibold"
-                      value="5 Days"
-                    >
-                      5 Days
-                    </SelectItem>
-                    <SelectItem
-                      className="text-xs text-mytextlight font-body font-semibold"
-                      value="7 Day"
-                    >
-                      7 Days
-                    </SelectItem>
-                  </SelectContent>
-                </Select>
+                <Popover>
+                  <PopoverTrigger asChild>
+                    <FormControl>
+                      <Button
+                        variant={'outline'}
+                        className={cn(
+                          'w-full pl-3 text-left font-normal',
+                          !field.value && 'text-muted-foreground'
+                        )}
+                      >
+                        {field.value ? (
+                          format(field.value, 'PPP')
+                        ) : (
+                          <span>Pick a date</span>
+                        )}
+                        <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
+                      </Button>
+                    </FormControl>
+                  </PopoverTrigger>
+                  <PopoverContent className="w-auto p-0" align="start">
+                    <Calendar
+                      mode="single"
+                      selected={field.value}
+                      onSelect={field.onChange}
+                      disabled={(date) => date < new Date()}
+                      initialFocus
+                    />
+                  </PopoverContent>
+                </Popover>
                 <FormMessage className="text-xs font-body font-medium text-red-500" />
               </FormItem>
             )}

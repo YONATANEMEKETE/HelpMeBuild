@@ -18,6 +18,7 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 import { toast } from 'sonner';
+import { formateDateForTasks } from '@/lib/date';
 
 interface Props {
   feature: featureState;
@@ -27,11 +28,13 @@ interface Props {
 const FeatureCard = ({ feature, projectName }: Props) => {
   const { removeFeature, checkFeature, unCheckFeature } = useProjects();
 
+  const deadline = formateDateForTasks(feature.dueDate);
+
   return (
     <Sheet>
       <div
         className={`flex items-center gap-x-4 w-full px-4 py-2 border rounded-lg bg-mybglight cursor-pointer shadow-sm ${
-          feature.implemented && 'opacity-70'
+          feature.implemented && 'opacity-50'
         }`}
       >
         <Checkbox
@@ -59,7 +62,7 @@ const FeatureCard = ({ feature, projectName }: Props) => {
               </p>
               <div className="flex items-center gap-x-4 text-xs text-mytextlight font-body font-semibold">
                 <Clock size={16} />
-                <p>{feature.dueDate}</p>
+                <p>{deadline}</p>
               </div>
             </div>
             <DropdownMenu>
@@ -107,7 +110,7 @@ const FeatureCard = ({ feature, projectName }: Props) => {
                 Due Date
               </p>
               <p className="text-sm text-mytextlight/80 font-body font-semibold">
-                {feature.dueDate}
+                {deadline}
               </p>
             </div>
           </div>

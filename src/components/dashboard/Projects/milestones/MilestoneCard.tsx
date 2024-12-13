@@ -35,7 +35,11 @@ const MilestoneCard = ({ milestone, projectName }: Props) => {
   const deadline = formateDateForTasks(milestone.dueDate);
 
   return (
-    <div className="px-4 py-2 rounded-lg border bg-mybglight cursor-pointer shadow-sm flex items-center justify-between">
+    <div
+      className={`px-4 py-2 rounded-lg border bg-mybglight cursor-pointer shadow-sm flex items-center justify-between ${
+        milestone.completed && 'opacity-50'
+      }`}
+    >
       <div className="flex items-center gap-x-4">
         <Checkbox
           checked={milestone.completed}
