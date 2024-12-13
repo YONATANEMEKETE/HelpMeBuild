@@ -31,6 +31,8 @@ interface storeAction {
   unCheckFeature: (projectName: string, featureName: string) => void;
   addVisuals: (projectName: string, visuals: string) => void;
   deleteVisuals: (projectName: string, visuals: string) => void;
+  addTechs: (projectName: string, tech: string[]) => void;
+  removetechs: (projectName: string, tech: string) => void;
   reset: () => void;
 }
 
@@ -136,6 +138,34 @@ const useProjects = create<storeState & storeAction>()(
               return {
                 ...project,
                 visuals: project.visuals.filter((visual) => visual !== visuals),
+              };
+            }
+            return project;
+          }),
+        }));
+      },
+
+      addTechs: (projectName, techs) => {
+        Set((state) => ({
+          projects: state.projects.map((project) => {
+            if (project.name === projectName) {
+              return {
+                ...project,
+                techs: [...project.techs, ...techs],
+              };
+            }
+            return project;
+          }),
+        }));
+      },
+
+      removetechs: (projectName, tech) => {
+        Set((state) => ({
+          projects: state.projects.map((project) => {
+            if (project.name === projectName) {
+              return {
+                ...project,
+                techs: project.techs.filter((t) => t !== tech),
               };
             }
             return project;

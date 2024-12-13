@@ -5,9 +5,17 @@ import React, { useState } from 'react';
 import Tags from './Tags';
 import { Button } from '@/components/ui/button';
 import { Check, CheckCheck, CheckCircle, CheckCircle2 } from 'lucide-react';
+import useProjects from '@/stores/use-projects';
+import { toast } from 'sonner';
 
-const AddTechForm = () => {
+interface Props {
+  projectName: string;
+  closeDialog: () => void;
+}
+
+const AddTechForm = ({ projectName, closeDialog }: Props) => {
   const [selected, setSelected] = useState<string[]>([]);
+  const { addTechs } = useProjects();
 
   const handleSelect = (name: string) => {
     if (selected.includes(name)) {
@@ -15,6 +23,12 @@ const AddTechForm = () => {
     } else {
       setSelected([...selected, name]);
     }
+  };
+
+  const handleTechStore = () => {
+    addTechs(projectName, selected);
+    toast.success(`${selected.length} techs added successfuly`);
+    closeDialog();
   };
 
   return (
@@ -41,7 +55,10 @@ const AddTechForm = () => {
           );
         })}
       </div>
-      <Button className="text-sm text-mybg font-body  bg-myaccentdark hover:bg-myaccent w-full">
+      <Button
+        onClick={handleTechStore}
+        className="text-sm text-mybg font-body  bg-myaccentdark hover:bg-myaccent w-full"
+      >
         Add Techs
       </Button>
     </div>

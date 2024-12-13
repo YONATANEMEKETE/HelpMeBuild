@@ -1,3 +1,5 @@
+'use client';
+
 import AddTechForm from '@/components/dashboard/Projects/techs/AddTechForm';
 import TechCard from '@/components/dashboard/Projects/techs/TechCard';
 import { Button } from '@/components/ui/button';
@@ -7,19 +9,30 @@ import {
   DialogTitle,
   DialogTrigger,
 } from '@/components/ui/dialog';
-import { techs } from '@/constant/constant';
+import useProjects from '@/stores/use-projects';
 import { Plus, X } from 'lucide-react';
-import React from 'react';
+import { useParams } from 'next/navigation';
+import React, { useState } from 'react';
 
 const Techs = () => {
+  const { name } = useParams();
+  const [open, setOpen] = useState(false);
+  const { projects } = useProjects();
+  const currentProject = projects.find((project) => project.name === name);
+  const techs = currentProject?.techs;
+
+  const handleDialog = () => {
+    setOpen(false);
+  };
+
   return (
     <section className="flex-1 flex flex-col gap-y-4">
       <p className="text-xl text-mytext font-body font-semibold">TechStacks</p>
       <div className="flex flex-wrap gap-2">
-        {techs.map((tech) => (
-          <TechCard key={tech.name} tech={tech} />
+        {techs?.map((tech) => (
+          <TechCard key={tech} tech={tech} projectName={name as string} />
         ))}
-        <Dialog>
+        <Dialog open={open} onOpenChange={setOpen}>
           <DialogTrigger asChild>
             <Button
               variant={'outline'}
@@ -32,7 +45,10 @@ const Techs = () => {
             <DialogTitle className="text-mytext font-body font-semibold">
               Choose the Techs you want to use
             </DialogTitle>
-            <AddTechForm />
+            <AddTechForm
+              projectName={name as string}
+              closeDialog={handleDialog}
+            />
           </DialogContent>
         </Dialog>
       </div>
