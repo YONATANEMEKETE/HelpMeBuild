@@ -15,6 +15,7 @@ import { toast } from 'sonner';
 
 const ProjectCard = ({ project }: { project: ProjectState }) => {
   const { removeProject } = useProjects();
+  const toolsToDisplay = project.techs.slice(0, 5);
 
   return (
     <div className="bg-mybg rounded-md overflow-clip  max-w-[300px] min-w-[300px] w-[300px] flex-auto h-fit border-x-2 border-b border-mybglight cursor-pointer">
@@ -69,7 +70,7 @@ const ProjectCard = ({ project }: { project: ProjectState }) => {
           >
             <Separator />
             <div className="flex items-center gap-1 flex-wrap">
-              {project.techs?.map((item: any) => {
+              {toolsToDisplay.map((item: any) => {
                 return (
                   <Badge
                     variant={'outline'}

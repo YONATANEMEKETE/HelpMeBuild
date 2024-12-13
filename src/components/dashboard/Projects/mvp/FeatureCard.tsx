@@ -60,10 +60,14 @@ const FeatureCard = ({ feature, projectName }: Props) => {
               >
                 {feature.name}
               </p>
-              <div className="flex items-center gap-x-4 text-xs text-mytextlight font-body font-semibold">
-                <Clock size={16} />
-                <p>{deadline}</p>
-              </div>
+              {feature.implemented ? (
+                <Completed />
+              ) : (
+                <div className="flex items-center gap-x-4 text-xs text-mytextlight font-body font-semibold">
+                  <Clock size={16} />
+                  <p>{deadline}</p>
+                </div>
+              )}
             </div>
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
