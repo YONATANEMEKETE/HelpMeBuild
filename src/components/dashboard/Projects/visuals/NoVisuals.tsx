@@ -13,7 +13,7 @@ const NoVisuals = () => {
         <div className="flex flex-col items-center gap-y-2">
           <UploadCloud size={60} className="text-mytext/80" />
           <div className="text-center">
-            <p className="text-2xl text-mytext font-body font-semibold">
+            <p className="text-2xl text-mytext font-body font-bold">
               No Visuals!
             </p>
             <p className="text-sm text-mytextlight font-body font-semibold">

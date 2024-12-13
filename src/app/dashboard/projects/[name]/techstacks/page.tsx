@@ -2,6 +2,7 @@
 
 import AddTechForm from '@/components/dashboard/Projects/techs/AddTechForm';
 import TechCard from '@/components/dashboard/Projects/techs/TechCard';
+import DotPattern from '@/components/DotPatterns';
 import { Button } from '@/components/ui/button';
 import {
   Dialog,
@@ -26,7 +27,8 @@ const Techs = () => {
   };
 
   return (
-    <section className="flex-1 flex flex-col gap-y-4">
+    <section className="flex-1 flex flex-col gap-y-4 relative">
+      <DotPattern />
       <p className="text-xl text-mytext font-body font-semibold">TechStacks</p>
       <div className="flex flex-wrap gap-2">
         {techs?.map((tech) => (
@@ -36,7 +38,7 @@ const Techs = () => {
           <DialogTrigger asChild>
             <Button
               variant={'outline'}
-              className="text-myaccentdark hover:text-myaccentdark bg-mybg hover:bg-mybg px-8 h-9"
+              className="relative text-myaccentdark hover:text-myaccentdark bg-mybg hover:bg-mybg px-8 h-9"
             >
               <Plus size={16} />
             </Button>

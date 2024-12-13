@@ -1,7 +1,8 @@
+import NoMilestones from '@/components/dashboard/Projects/milestones/NoMilestones';
 import React from 'react';
 
 const Milestones = () => {
-  return <div>Milestones</div>;
+  return <NoMilestones />;
 };
 
 export default Milestones;

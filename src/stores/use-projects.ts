@@ -15,6 +15,7 @@ export interface ProjectState {
   techs: string[] | [];
   createdAt: string;
   features: featureState[] | [];
+  milestones: featureState[] | [];
   visuals: string[] | [];
 }
 
@@ -33,6 +34,8 @@ interface storeAction {
   deleteVisuals: (projectName: string, visuals: string) => void;
   addTechs: (projectName: string, tech: string[]) => void;
   removetechs: (projectName: string, tech: string) => void;
+  addMilestone: (projectName: string, milestone: featureState) => void;
+  removeMilestone: (projectName: string, milestone: string) => void;
   reset: () => void;
 }
 
@@ -61,6 +64,7 @@ const useProjects = create<storeState & storeAction>()(
             return project;
           }),
         })),
+
       removeFeature: (projectName, featureName) => {
         Set((state) => ({
           projects: state.projects.map((project) => {
@@ -76,6 +80,7 @@ const useProjects = create<storeState & storeAction>()(
           }),
         }));
       },
+
       checkFeature: (projectName, featureName) => {
         Set((state) => ({
           projects: state.projects.map((project) => {
@@ -166,6 +171,36 @@ const useProjects = create<storeState & storeAction>()(
               return {
                 ...project,
                 techs: project.techs.filter((t) => t !== tech),
+              };
+            }
+            return project;
+          }),
+        }));
+      },
+
+      removeMilestone: (projectName, milestone) => {
+        Set((state) => ({
+          projects: state.projects.map((project) => {
+            if (project.name === projectName) {
+              return {
+                ...project,
+                features: project.features.filter(
+                  (feature) => feature.name !== milestone
+                ),
+              };
+            }
+            return project;
+          }),
+        }));
+      },
+
+      addMilestone: (projectName, milestone) => {
+        Set((state) => ({
+          projects: state.projects.map((project) => {
+            if (project.name === projectName) {
+              return {
+                ...project,
+                milestones: [...project.milestones, milestone],
               };
             }
             return project;
