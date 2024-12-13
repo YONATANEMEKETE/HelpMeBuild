@@ -43,6 +43,7 @@ interface storeAction {
   removetechs: (projectName: string, tech: string) => void;
   addMilestone: (projectName: string, milestone: milestoneState) => void;
   removeMilestone: (projectName: string, milestone: string) => void;
+  toggleMilestone: (projectName: string, milestone: string) => void;
   reset: () => void;
 }
 
@@ -208,6 +209,28 @@ const useProjects = create<storeState & storeAction>()(
               return {
                 ...project,
                 milestones: [...project.milestones, milestone],
+              };
+            }
+            return project;
+          }),
+        }));
+      },
+
+      toggleMilestone: (projectName, milestone) => {
+        Set((state) => ({
+          projects: state.projects.map((project) => {
+            if (project.name === projectName) {
+              return {
+                ...project,
+                milestones: project.milestones.map((task) => {
+                  if (task.name === milestone) {
+                    return {
+                      ...task,
+                      completed: !task.completed,
+                    };
+                  }
+                  return task;
+                }),
               };
             }
             return project;

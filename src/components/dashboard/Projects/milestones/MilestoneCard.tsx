@@ -30,7 +30,8 @@ interface Props {
 }
 
 const MilestoneCard = ({ milestone, projectName }: Props) => {
-  const { removeMilestone, checkFeature, unCheckFeature } = useProjects();
+  const { removeMilestone, checkFeature, unCheckFeature, toggleMilestone } =
+    useProjects();
   const deadline = formateDateForTasks(milestone.dueDate);
 
   return (
@@ -39,11 +40,7 @@ const MilestoneCard = ({ milestone, projectName }: Props) => {
         <Checkbox
           checked={milestone.completed}
           onCheckedChange={(checked) => {
-            if (checked) {
-              checkFeature(projectName, milestone.name);
-            } else if (!checked) {
-              unCheckFeature(projectName, milestone.name);
-            }
+            toggleMilestone(projectName, milestone.name);
           }}
           className={cn(
             'data-[state=checked]:bg-myaccent border-mytextlight rounded-full data-[state=checked]:border-myaccent'
