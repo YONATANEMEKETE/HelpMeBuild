@@ -62,23 +62,29 @@ const AddFeatureForm = ({ onFormSubmited, projectName }: Props) => {
       duedate: new Date(),
     },
   });
-  const { addFeature } = useProjects();
+  const { addFeature, projects } = useProjects();
+  const currentProject = projects.find((p) => p.name === projectName);
 
   const handleFormSubmit = (data: z.infer<typeof featureSchema>) => {
-    // const stringDay = data.duedate.charAt(0);
-    // const day = Number(stringDay);
-    // const dueDate = createdAt(day);
-
     const feature = {
       name: data.name,
       description: data.description,
       dueDate: data.duedate,
       implemented: false,
     };
-    addFeature(projectName, feature);
-    toast.success('Feature Created successfuly');
 
-    onFormSubmited();
+    const alreadyExists = currentProject?.features.find((f) => {
+      return f.name === feature.name;
+    });
+
+    if (alreadyExists) {
+      toast.error('Feature already exists');
+    } else {
+      addFeature(projectName, feature);
+      toast.success('Feature Created successfuly');
+
+      onFormSubmited();
+    }
   };
 
   return (

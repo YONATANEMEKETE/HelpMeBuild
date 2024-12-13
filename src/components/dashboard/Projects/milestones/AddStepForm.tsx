@@ -57,6 +57,9 @@ const AddStepForm = ({ projectName, closeDialog }: Props) => {
     },
   });
   const { addMilestone, projects } = useProjects();
+  const currentProject = projects.find(
+    (project) => project.name === projectName
+  );
 
   const handleFormSubmit = (data: z.infer<typeof featureSchema>) => {
     const milestone = {
@@ -66,10 +69,18 @@ const AddStepForm = ({ projectName, closeDialog }: Props) => {
       completedDate: null,
     };
 
-    addMilestone(projectName, milestone);
-    toast.success(`Milestone Created successfuly`);
+    const alreadyExists = currentProject?.milestones.find((m) => {
+      return m.name === milestone.name;
+    });
 
-    closeDialog();
+    if (alreadyExists) {
+      toast.error('Milestone already exists');
+    } else {
+      addMilestone(projectName, milestone);
+      toast.success(`Milestone Created successfuly`);
+
+      closeDialog();
+    }
   };
 
   return (
