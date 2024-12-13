@@ -1,4 +1,28 @@
 import { House, ListTodo, BotMessageSquare } from 'lucide-react';
+import {
+  react,
+  nextjs,
+  angular,
+  vue,
+  svelte,
+  vite,
+  javascript,
+  typescript,
+  nuxt,
+  skecth,
+  figma,
+  flutter,
+  swift,
+  kotlin,
+  electron,
+  vercel,
+  netlify,
+  aws,
+  jest,
+  cypress,
+  tailwind,
+  mui,
+} from './icons';
 
 const navs = [
   {
@@ -39,6 +63,95 @@ const tabs = [
   },
 ];
 
-const techs = [{}];
+const techs = [
+  {
+    name: 'React',
+    icon: react,
+  },
+  {
+    name: 'Next.js',
+    icon: nextjs,
+  },
+  {
+    name: 'Angular',
+    icon: angular,
+  },
+  {
+    name: 'Vue',
+    icon: vue,
+  },
+  {
+    name: 'Svelte',
+    icon: svelte,
+  },
+  {
+    name: 'Vite',
+    icon: vite,
+  },
+  {
+    name: 'Javascript',
+    icon: javascript,
+  },
+  {
+    name: 'Typescript',
+    icon: typescript,
+  },
+  {
+    name: 'Nuxt',
+    icon: nuxt,
+  },
+  {
+    name: 'Sketch',
+    icon: skecth,
+  },
+  {
+    name: 'Figma',
+    icon: figma,
+  },
+  {
+    name: 'Flutter',
+    icon: flutter,
+  },
+  {
+    name: 'Swift',
+    icon: swift,
+  },
+  {
+    name: 'Kotlin',
+    icon: kotlin,
+  },
+  {
+    name: 'Electron',
+    icon: electron,
+  },
+  {
+    name: 'Vercel',
+    icon: vercel,
+  },
+  {
+    name: 'Netlify',
+    icon: netlify,
+  },
+  {
+    name: 'AWS',
+    icon: aws,
+  },
+  {
+    name: 'Jest',
+    icon: jest,
+  },
+  {
+    name: 'Cypress',
+    icon: cypress,
+  },
+  {
+    name: 'Tailwind',
+    icon: tailwind,
+  },
+  {
+    name: 'Material UI',
+    icon: mui,
+  },
+];
 
-export { navs, appearances, tabs };
+export { navs, appearances, tabs, techs };
