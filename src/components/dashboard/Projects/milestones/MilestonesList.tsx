@@ -57,15 +57,17 @@ const MilestonesList = ({ projectName }: Props) => {
           </DialogContent>
         </Dialog>
       </div>
-      {milestones?.map((milestone) => {
-        return (
-          <MilestoneCard
-            key={milestone.name}
-            milestone={milestone}
-            projectName={projectName}
-          />
-        );
-      })}
+      <div className="flex flex-col gap-2">
+        {milestones?.map((milestone) => {
+          return (
+            <MilestoneCard
+              key={milestone.name}
+              milestone={milestone}
+              projectName={projectName}
+            />
+          );
+        })}
+      </div>
     </section>
   );
 };

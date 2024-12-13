@@ -21,6 +21,8 @@ import { Clock, MoreHorizontal, Trash2 } from 'lucide-react';
 import React from 'react';
 import { Completed, InProgress } from '../StatusBadge';
 import { toast } from 'sonner';
+import { Separator } from '@radix-ui/react-select';
+import { formateDateForTasks } from '@/lib/date';
 
 interface Props {
   milestone: milestoneState;
@@ -29,6 +31,7 @@ interface Props {
 
 const MilestoneCard = ({ milestone, projectName }: Props) => {
   const { removeMilestone, checkFeature, unCheckFeature } = useProjects();
+  const deadline = formateDateForTasks(milestone.dueDate);
 
   return (
     <div className="px-4 py-2 rounded-lg border bg-mybglight cursor-pointer shadow-sm flex items-center justify-between">
@@ -50,7 +53,22 @@ const MilestoneCard = ({ milestone, projectName }: Props) => {
           <p className="text-sm text-mytextlight font-body font-semibold">
             {milestone.name}
           </p>
-          {milestone.completed ? <Completed /> : <InProgress />}
+          {milestone.completed ? (
+            <Completed />
+          ) : (
+            <div className="flex items-center gap-x-4">
+              <InProgress />
+              <div
+                className="flex items-center gap-x-2
+              "
+              >
+                <Clock size={12} className="text-mytextlight" />
+                <p className="text-xs text-mytextlight font-body font-semibold">
+                  {deadline}
+                </p>
+              </div>
+            </div>
+          )}
         </div>
       </div>
       <DropdownMenu>

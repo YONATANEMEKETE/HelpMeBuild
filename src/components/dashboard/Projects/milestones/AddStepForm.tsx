@@ -67,14 +67,8 @@ const AddStepForm = ({ projectName, closeDialog }: Props) => {
     };
 
     addMilestone(projectName, milestone);
-    toast.success(
-      `${milestone.name} - ${milestone.dueDate} Milestone Created successfuly`
-    );
+    toast.success(`Milestone Created successfuly`);
 
-    const currentproject = projects.find(
-      (project) => project.name === projectName
-    );
-    toast.message(`${currentproject?.milestones?.length} Milestones`);
     closeDialog();
   };
 
