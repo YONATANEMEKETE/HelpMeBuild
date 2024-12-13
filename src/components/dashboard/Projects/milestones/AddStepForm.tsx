@@ -56,7 +56,7 @@ const AddStepForm = ({ projectName, closeDialog }: Props) => {
       duedate: new Date(),
     },
   });
-  const { addMilestone } = useProjects();
+  const { addMilestone, projects } = useProjects();
 
   const handleFormSubmit = (data: z.infer<typeof featureSchema>) => {
     const milestone = {
@@ -71,6 +71,10 @@ const AddStepForm = ({ projectName, closeDialog }: Props) => {
       `${milestone.name} - ${milestone.dueDate} Milestone Created successfuly`
     );
 
+    const currentproject = projects.find(
+      (project) => project.name === projectName
+    );
+    toast.message(`${currentproject?.milestones?.length} Milestones`);
     closeDialog();
   };
 
