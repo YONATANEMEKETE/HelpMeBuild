@@ -8,6 +8,13 @@ export interface featureState {
   implemented: boolean;
 }
 
+export interface milestoneState {
+  name: string;
+  completed: boolean;
+  dueDate: Date;
+  completedDate: Date | null;
+}
+
 export interface ProjectState {
   name: string;
   color: string;
@@ -15,7 +22,7 @@ export interface ProjectState {
   techs: string[] | [];
   createdAt: string;
   features: featureState[] | [];
-  milestones: featureState[] | [];
+  milestones: milestoneState[] | [];
   visuals: string[] | [];
 }
 
@@ -34,7 +41,7 @@ interface storeAction {
   deleteVisuals: (projectName: string, visuals: string) => void;
   addTechs: (projectName: string, tech: string[]) => void;
   removetechs: (projectName: string, tech: string) => void;
-  addMilestone: (projectName: string, milestone: featureState) => void;
+  addMilestone: (projectName: string, milestone: milestoneState) => void;
   removeMilestone: (projectName: string, milestone: string) => void;
   reset: () => void;
 }
@@ -184,8 +191,8 @@ const useProjects = create<storeState & storeAction>()(
             if (project.name === projectName) {
               return {
                 ...project,
-                features: project.features.filter(
-                  (feature) => feature.name !== milestone
+                milestones: project.milestones.filter(
+                  (task) => task.name !== milestone
                 ),
               };
             }

@@ -22,6 +22,7 @@ import useColor from '@/stores/use-color';
 import { createdAt } from '@/lib/date';
 import { useDialog } from '@/hooks/use-dialog';
 import { toast } from 'sonner';
+import { Milestone } from 'lucide-react';
 
 const formSchema = z.object({
   name: z
@@ -62,6 +63,7 @@ const CreateProjectForm = ({ onFormSubmited }: Props) => {
       features: [],
       techs: [],
       visuals: [],
+      milestones: [],
     };
     addProject(project);
     onFormSubmited();
