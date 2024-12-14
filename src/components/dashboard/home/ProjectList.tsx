@@ -15,6 +15,7 @@ import ProjectCard from './ProjectCard';
 import CreateProjectForm from './CreateProjectForm';
 import { useDialog } from '@/hooks/use-dialog';
 import ProjectsListed from './ProjectsListed';
+import { motion } from 'framer-motion';
 
 const ProjectList = () => {
   const { open, setOpen } = useDialog();
@@ -26,13 +27,23 @@ const ProjectList = () => {
   return (
     <section className="min-h-[93vh] max-w-[1300px] px-10 pt-6 py-4 flex flex-col gap-y-4">
       <div className="pb-6 border-b">
-        <p className="text-base text-mytextlight font-body font-semibold">
+        <motion.p
+          initial={{ opacity: 0, x: -20 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.5 }}
+          className="text-base text-mytextlight font-body font-semibold"
+        >
           Welcome Back 🙌
-        </p>
+        </motion.p>
         <div className="flex items-center justify-between">
-          <p className="text-2xl text-mytext font-body font-semibold">
+          <motion.p
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 1 }}
+            className="text-2xl text-mytext font-body font-semibold"
+          >
             Projects
-          </p>
+          </motion.p>
           <Dialog open={open} onOpenChange={setOpen}>
             <DialogTrigger asChild>
               <Button className="flex items-center gap-x-2 text-sm text-mybg font-body bg-myaccentdark hover:bg-myaccent active:bg-myaccentlight">

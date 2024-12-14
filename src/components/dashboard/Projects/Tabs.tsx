@@ -4,7 +4,7 @@ import { tabs } from '@/constant/constant';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import React from 'react';
-import { motion } from 'motion/react';
+import { AnimatePresence, motion } from 'framer-motion';
 
 interface Props {
   project: string;
@@ -27,13 +27,20 @@ const Tabs = ({ project }: Props) => {
             }  font-body font-semibold cursor-pointer overflow-hidden`}
           >
             {pathName.includes(tab.link) && (
-              <div
-                style={{
-                  position: 'absolute',
-                  inset: 0,
-                }}
-                className="bg-myaccentlight/50"
-              ></div>
+              <AnimatePresence>
+                <motion.div
+                  initial={{ scale: 0.5, opacity: 0 }}
+                  animate={{ scale: 1, opacity: 1 }}
+                  exit={{ scale: 0.8, opacity: 0 }}
+                  transition={{
+                    type: 'spring',
+                    stiffness: 400,
+                    damping: 18,
+                    bounce: 0.15,
+                  }}
+                  className="absolute inset-0 bg-myaccentlight/80"
+                ></motion.div>
+              </AnimatePresence>
             )}
             <p className="z-20 relative text-center">{tab.name}</p>
           </Link>

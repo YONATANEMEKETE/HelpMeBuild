@@ -12,13 +12,27 @@ import Link from 'next/link';
 import { redirect } from 'next/navigation';
 import React from 'react';
 import { toast } from 'sonner';
+import { AnimatePresence, motion } from 'framer-motion';
 
 const ProjectCard = ({ project }: { project: ProjectState }) => {
-  const { removeProject } = useProjects();
+  const { removeProject, projects } = useProjects();
   const toolsToDisplay = project.techs.slice(0, 5);
 
+  const variants = {
+    initial: { opacity: 0, scale: 0.9 },
+    animate: {
+      opacity: 1,
+      scale: 1,
+    },
+  };
+
   return (
-    <div className="bg-mybg rounded-md overflow-clip  max-w-[300px] min-w-[300px] w-[300px] flex-auto h-fit border-x border-b border-mytextlight/20 cursor-pointer">
+    <motion.div
+      layout
+      variants={variants}
+      exit={{ opacity: 0, scale: 0.75 }}
+      className="bg-mybg rounded-md overflow-clip  max-w-[300px] min-w-[300px] w-[300px] flex-auto h-fit border-x border-b border-mytextlight/20 cursor-pointer"
+    >
       <div
         style={{ backgroundColor: project.color }}
         className="w-full h-1 bg-myaccentlight"
@@ -91,7 +105,7 @@ const ProjectCard = ({ project }: { project: ProjectState }) => {
           </Link>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

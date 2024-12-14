@@ -1,18 +1,26 @@
+'use client';
+
 import DotPattern from '@/components/DotPatterns';
 
 import { Plus, UploadCloud } from 'lucide-react';
 import React from 'react';
 import AddVisualsForm from './AddVisualsForm';
 import UploadDialog from './uploadDialog';
+import { motion } from 'framer-motion';
 
 const NoVisuals = () => {
   return (
     <div className="h-full flex items-center justify-center gap-y-6 relative">
       <DotPattern />
       <div className="flex flex-col items-center gap-y-6 z-50 max-w-[400px]">
-        <div className="flex flex-col items-center gap-y-2">
+        <motion.div className="flex flex-col items-center gap-y-2">
           <UploadCloud size={60} className="text-mytext/80" />
-          <div className="text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.25 }}
+            className="text-center"
+          >
             <p className="text-2xl text-mytext font-body font-bold">
               No Visuals!
             </p>
@@ -20,8 +28,8 @@ const NoVisuals = () => {
               upload images of your interfaces, inspirations to steal from or
               wireframes.
             </p>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
         <UploadDialog />
       </div>
     </div>

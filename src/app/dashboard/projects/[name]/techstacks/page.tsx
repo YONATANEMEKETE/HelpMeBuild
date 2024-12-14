@@ -14,6 +14,7 @@ import useProjects from '@/stores/use-projects';
 import { Plus, X } from 'lucide-react';
 import { useParams } from 'next/navigation';
 import React, { useState } from 'react';
+import { motion } from 'framer-motion';
 
 const Techs = () => {
   const { name } = useParams();
@@ -26,11 +27,27 @@ const Techs = () => {
     setOpen(false);
   };
 
+  const variants = {
+    initial: { opacity: 0, scale: 0.9 },
+    animate: {
+      opacity: 1,
+      scale: 1,
+      transition: {
+        staggerChildren: 0.05,
+      },
+    },
+  };
+
   return (
     <section className="flex-1 flex flex-col gap-y-4 relative">
       <DotPattern />
       <p className="text-xl text-mytext font-body font-semibold">TechStacks</p>
-      <div className="flex flex-wrap gap-2">
+      <motion.div
+        variants={variants}
+        initial="initial"
+        animate="animate"
+        className="flex flex-wrap gap-2"
+      >
         {techs?.map((tech) => (
           <TechCard key={tech} tech={tech} projectName={name as string} />
         ))}
@@ -53,7 +70,7 @@ const Techs = () => {
             />
           </DialogContent>
         </Dialog>
-      </div>
+      </motion.div>
     </section>
   );
 };

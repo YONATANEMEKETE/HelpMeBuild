@@ -23,6 +23,7 @@ import { Completed, InProgress } from '../StatusBadge';
 import { toast } from 'sonner';
 import { Separator } from '@radix-ui/react-select';
 import { formateDateForTasks } from '@/lib/date';
+import { motion } from 'framer-motion';
 
 interface Props {
   milestone: milestoneState;
@@ -34,8 +35,19 @@ const MilestoneCard = ({ milestone, projectName }: Props) => {
     useProjects();
   const deadline = formateDateForTasks(milestone.dueDate);
 
+  const variants = {
+    initial: { opacity: 0, scale: 0.9 },
+    animate: {
+      opacity: 1,
+      scale: 1,
+    },
+  };
+
   return (
-    <div
+    <motion.div
+      layout
+      variants={variants}
+      exit={{ opacity: 0, scale: 0.75 }}
       className={`px-4 py-2 rounded-lg border bg-mybglight cursor-pointer shadow-sm flex items-center justify-between ${
         milestone.completed && 'opacity-50'
       }`}
@@ -93,7 +105,7 @@ const MilestoneCard = ({ milestone, projectName }: Props) => {
           </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>
-    </div>
+    </motion.div>
   );
 };
 

@@ -13,6 +13,7 @@ import { Button } from '@/components/ui/button';
 import { Plus } from 'lucide-react';
 import AddStepForm from './AddStepForm';
 import { useParams } from 'next/navigation';
+import { motion } from 'framer-motion';
 
 interface Props {
   projectName: string;
@@ -29,6 +30,17 @@ const MilestonesList = ({ projectName }: Props) => {
 
   const handleDialogClose = () => {
     setOpen(false);
+  };
+
+  const variants = {
+    initial: { opacity: 0, scale: 0.9 },
+    animate: {
+      opacity: 1,
+      scale: 1,
+      transition: {
+        staggerChildren: 0.25,
+      },
+    },
   };
 
   return (
@@ -57,7 +69,12 @@ const MilestonesList = ({ projectName }: Props) => {
           </DialogContent>
         </Dialog>
       </div>
-      <div className="flex flex-col gap-2">
+      <motion.div
+        variants={variants}
+        initial="initial"
+        animate="animate"
+        className="flex flex-col gap-2"
+      >
         {milestones?.map((milestone) => {
           return (
             <MilestoneCard
@@ -67,7 +84,7 @@ const MilestonesList = ({ projectName }: Props) => {
             />
           );
         })}
-      </div>
+      </motion.div>
     </section>
   );
 };

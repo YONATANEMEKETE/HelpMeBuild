@@ -13,6 +13,7 @@ import { Plus } from 'lucide-react';
 import React, { useState } from 'react';
 import AddStepForm from './AddStepForm';
 import { useParams } from 'next/navigation';
+import { motion } from 'framer-motion';
 
 const NoMilestones = () => {
   const [open, setOpen] = useState(false);
@@ -26,7 +27,11 @@ const NoMilestones = () => {
     <div className="h-full flex items-center justify-center relative">
       <DotPattern />
       <div className="relative flex flex-col items-center gap-y-6">
-        <div className="text-center max-w-[400px]">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="text-center max-w-[400px]"
+        >
           <p className="text-2xl text-mytext font-body font-bold">
             No Milestones!
           </p>
@@ -34,14 +39,20 @@ const NoMilestones = () => {
             breakdown each of your features into milestones so you can keep
             track of your progress.
           </p>
-        </div>
+        </motion.div>
 
         <Dialog open={open} onOpenChange={setOpen}>
           <DialogTrigger asChild>
-            <Button className="flex items-center gap-x-2 text-sm text-mybg font-body font-semibold bg-myaccentdark hover:bg-myaccent active:bg-myaccentlight">
-              <Plus />
-              Add Steps
-            </Button>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.4 }}
+            >
+              <Button className="flex items-center gap-x-2 text-sm text-mybg font-body font-semibold bg-myaccentdark hover:bg-myaccent active:bg-myaccentlight">
+                <Plus />
+                Add Steps
+              </Button>
+            </motion.div>
           </DialogTrigger>
           <DialogContent className="max-w-[400px]">
             <DialogHeader className="">

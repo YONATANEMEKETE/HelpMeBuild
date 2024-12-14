@@ -5,8 +5,9 @@ import { pinata } from '@/lib/pinata';
 import useProjects from '@/stores/use-projects';
 import { X } from 'lucide-react';
 import Image from 'next/image';
-import React from 'react';
+import React, { useRef } from 'react';
 import { toast } from 'sonner';
+import { motion, useInView } from 'framer-motion';
 
 interface Props {
   url: string;
@@ -23,7 +24,12 @@ const VisualCard = ({ url, projectName }: Props) => {
   };
 
   return (
-    <div className="group relative overflow-clip w-full aspect-video rounded-xl">
+    <motion.div
+      initial={{ scale: 0.7, rotateX: 25 }}
+      whileInView={{ scale: 1, rotateX: 0 }}
+      viewport={{ once: false, margin: '300px' }}
+      className="group relative overflow-clip w-full aspect-video rounded-xl"
+    >
       <Image
         src={url}
         alt="visual"
@@ -39,7 +45,7 @@ const VisualCard = ({ url, projectName }: Props) => {
       >
         <X size={16} />
       </Button>
-    </div>
+    </motion.div>
   );
 };
 
