@@ -20,12 +20,12 @@ const ProjectsListed = () => {
   };
 
   return (
-    <div className="grow bg-mybglight  p-4 rounded-lg">
+    <div className="grow bg-mybglight p-2 min-[400px]:p-4 rounded-lg">
       <motion.div
         variants={variants}
         initial="initial"
         animate="animate"
-        className="flex flex-wrap gap-5"
+        className="flex flex-wrap gap-5 justify-center min-[620px]:justify-start"
       >
         <LayoutGroup>
           <AnimatePresence>

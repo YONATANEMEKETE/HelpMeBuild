@@ -48,7 +48,7 @@ const MilestoneCard = ({ milestone, projectName }: Props) => {
       layout
       variants={variants}
       exit={{ opacity: 0, scale: 0.75 }}
-      className={`px-4 py-2 rounded-lg border bg-mybglight cursor-pointer shadow-sm flex items-center justify-between ${
+      className={`min-[500px]:px-4 px-2 py-2 rounded-lg border bg-mybglight cursor-pointer shadow-sm flex items-center justify-between ${
         milestone.completed && 'opacity-50'
       }`}
     >
@@ -69,7 +69,7 @@ const MilestoneCard = ({ milestone, projectName }: Props) => {
           {milestone.completed ? (
             <Completed />
           ) : (
-            <div className="flex items-center gap-x-4">
+            <div className="hidden min-[500px]:flex items-center gap-x-4">
               <InProgress />
               <div
                 className="flex items-center gap-x-2

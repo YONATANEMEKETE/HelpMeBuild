@@ -135,10 +135,10 @@ const ProjectsNav = () => {
       )}
 
       <Dialog open={open} onOpenChange={setOpen}>
-        <DialogTrigger asChild>
+        <DialogTrigger className="" asChild>
           <Button
             variant={'ghost'}
-            className="flex items-center justify-start gap-x-2 text-mytextlight hover:text-mytext"
+            className="hidden min-[500px]:flex items-center justify-start gap-x-2 text-mytextlight hover:text-mytext"
           >
             <Plus />
             <p className="text-xs font-semibold font-body">New Project</p>

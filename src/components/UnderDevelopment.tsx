@@ -13,7 +13,7 @@ const UnderDevelopment = ({ backlink }: Props) => {
   return (
     <div className="grow relative flex items-center justify-center">
       <DotPattern />
-      <div className="flex flex-col items-center gap-y-6 z-50 max-w-[500px]">
+      <div className="flex flex-col items-center gap-y-6 z-50 max-w-[300px] md:max-w-[400px] lg:max-w-[500px]">
         <Image
           src={buildingSvg}
           alt="building svg"

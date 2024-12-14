@@ -82,7 +82,7 @@ const CreateProjectForm = ({ onFormSubmited }: Props) => {
             name="name"
             render={({ field }) => (
               <FormItem>
-                <FormLabel className="text-sm text-mytext font-body font-semibold">
+                <FormLabel className="min-[400px]:text-sm text-xs text-mytext font-body font-semibold">
                   Project Name
                 </FormLabel>
                 <FormControl>
@@ -102,7 +102,7 @@ const CreateProjectForm = ({ onFormSubmited }: Props) => {
             name="description"
             render={({ field }) => (
               <FormItem>
-                <FormLabel className="text-sm text-mytext font-body font-semibold">
+                <FormLabel className="min-[400px]:text-sm text-xs text-mytext font-body font-semibold">
                   Project Desciption
                 </FormLabel>
                 <FormControl>

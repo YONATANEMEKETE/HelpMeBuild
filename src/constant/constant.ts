@@ -46,7 +46,7 @@ const appearances = ['#21211f', '#e32999', '#5729e3', '#29e386', '#e1f0e9'];
 
 const tabs = [
   {
-    name: 'MVP',
+    name: 'Mvp',
     link: 'mvp',
   },
   {

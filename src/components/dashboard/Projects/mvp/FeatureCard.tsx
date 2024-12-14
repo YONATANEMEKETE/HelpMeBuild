@@ -62,7 +62,7 @@ const FeatureCard = ({ feature, projectName }: Props) => {
           />
           <SheetTrigger asChild>
             <div className="flex items-center justify-between grow">
-              <div className="flex items-center gap-x-12">
+              <div className="flex items-center gap-x-4 min-[500px]:gap-x-12">
                 <p
                   className={`text-sm text-mytext/90 font-body font-semibold ${
                     feature.implemented && 'line-through'
@@ -73,7 +73,7 @@ const FeatureCard = ({ feature, projectName }: Props) => {
                 {feature.implemented ? (
                   <Completed />
                 ) : (
-                  <div className="flex items-center gap-x-4 text-xs text-mytextlight font-body font-semibold">
+                  <div className="hidden min-[500px]:flex items-center gap-x-4 text-xs text-mytextlight font-body font-semibold">
                     <Clock size={16} />
                     <p>{deadline}</p>
                   </div>
@@ -107,7 +107,7 @@ const FeatureCard = ({ feature, projectName }: Props) => {
         </div>
         <SheetContent className="w-[300px]">
           <SheetHeader className="mb-8">
-            <SheetTitle className="text-mytext font-body font-semibold text-xl">
+            <SheetTitle className="text-mytext text-start font-body font-semibold text-xl">
               {feature.name}
             </SheetTitle>
           </SheetHeader>

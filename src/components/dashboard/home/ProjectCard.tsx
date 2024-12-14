@@ -31,7 +31,7 @@ const ProjectCard = ({ project }: { project: ProjectState }) => {
       layout
       variants={variants}
       exit={{ opacity: 0, scale: 0.75 }}
-      className="bg-mybg rounded-md overflow-clip  max-w-[300px] min-w-[300px] w-[300px] flex-auto h-fit border-x border-b border-mytextlight/20 cursor-pointer"
+      className="bg-mybg rounded-md overflow-clip max-w-[400px]  min-[620px]:max-w-[300px] min-w-[250px] w-[300px] flex-1 h-fit border-x border-b border-mytextlight/20 cursor-pointer"
     >
       <div
         style={{ backgroundColor: project.color }}

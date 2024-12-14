@@ -32,7 +32,7 @@ const FeaturesList = ({ projectName }: Props) => {
       variants={variants}
       initial="initial"
       animate="animate"
-      className="flex flex-col gap-2 w-full p-4 grow rounded-lg bg-mybglight"
+      className="flex flex-col gap-2 w-full min-[500px]:p-4 p-2 grow rounded-lg bg-mybglight"
     >
       <LayoutGroup>
         <AnimatePresence>

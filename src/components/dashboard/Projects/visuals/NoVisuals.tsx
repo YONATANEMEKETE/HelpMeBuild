@@ -12,7 +12,7 @@ const NoVisuals = () => {
   return (
     <div className="h-full flex items-center justify-center gap-y-6 relative">
       <DotPattern />
-      <div className="flex flex-col items-center gap-y-6 z-50 max-w-[400px]">
+      <div className="flex flex-col items-center gap-y-6 z-50 max-w-[250px] md:max-w-[400px]">
         <motion.div className="flex flex-col items-center gap-y-2">
           <UploadCloud size={60} className="text-mytext/80" />
           <motion.div
@@ -21,10 +21,10 @@ const NoVisuals = () => {
             transition={{ duration: 0.25 }}
             className="text-center"
           >
-            <p className="text-2xl text-mytext font-body font-bold">
+            <p className="text-lg md:text-2xl text-mytext font-body font-bold">
               No Visuals!
             </p>
-            <p className="text-sm text-mytextlight font-body font-semibold">
+            <p className="text-xs md:text-sm text-mytextlight font-body font-semibold">
               upload images of your interfaces, inspirations to steal from or
               wireframes.
             </p>

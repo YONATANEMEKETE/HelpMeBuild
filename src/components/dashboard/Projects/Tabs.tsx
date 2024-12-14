@@ -20,7 +20,7 @@ const Tabs = ({ project }: Props) => {
           <Link
             href={`${tab.link}`}
             key={tab.name}
-            className={`relative w-[100px] py-2 rounded-md text-sm ${
+            className={`relative px-2 min-[400px]:px-4 min-[400px]:w-[90px] min-[500px]:w-[100px] py-1 min-[400px]:py-2 rounded-md text-xs min-[500px]:text-sm ${
               pathName.includes(tab.link)
                 ? 'text-mybg'
                 : 'text-mytextlight hover:text-mytext hover:bg-myaccentlight/10'

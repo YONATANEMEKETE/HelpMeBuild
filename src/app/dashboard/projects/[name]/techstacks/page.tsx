@@ -41,7 +41,9 @@ const Techs = () => {
   return (
     <section className="flex-1 flex flex-col gap-y-4 relative">
       <DotPattern />
-      <p className="text-xl text-mytext font-body font-semibold">TechStacks</p>
+      <p className="text-base md:text-xl text-mytext font-body font-semibold">
+        TechStacks
+      </p>
       <motion.div
         variants={variants}
         initial="initial"
@@ -60,7 +62,7 @@ const Techs = () => {
               <Plus size={16} />
             </Button>
           </DialogTrigger>
-          <DialogContent className="max-w-[500px]">
+          <DialogContent className="min-[450px]:max-w-[500px] max-w-[350px] rounded-lg">
             <DialogTitle className="text-mytext font-body font-semibold">
               Choose the Techs you want to use
             </DialogTitle>

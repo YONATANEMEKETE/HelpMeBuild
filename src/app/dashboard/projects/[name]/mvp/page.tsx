@@ -30,17 +30,17 @@ const Mvp = () => {
   return (
     <section className="flex flex-col gap-4 grow">
       <div className="flex items-center justify-between px-2">
-        <p className="text-base text-mytextlight font-body font-semibold">
+        <p className="text-sm min-[500px]:text-base text-mytextlight font-body font-semibold">
           Features
         </p>
         <Dialog open={open} onOpenChange={setOpen}>
           <DialogTrigger asChild>
-            <Button className="flex items-center gap-x-2 text-xs text-mybg font-body bg-myaccentdark hover:bg-myaccent active:bg-myaccentlight">
+            <Button className="flex items-center gap-x-2 text-xs text-mybg font-body bg-myaccentdark hover:bg-myaccent active:bg-myaccentlight h-8">
               <Plus />
               New Feature
             </Button>
           </DialogTrigger>
-          <DialogContent className="max-w-[400px]">
+          <DialogContent className="min-[500px]:max-w-[400px] max-w-[300px] rounded-lg">
             <DialogHeader className="">
               <DialogTitle className="text-base text-mytext font-body font-semibold">
                 Add New feature

@@ -14,8 +14,10 @@ const Appearance = () => {
 
   return (
     <div className="space-y-2 w-full px-1">
-      <p className="text-sm text-mytext font-body font-semibold">Appearance</p>
-      <div className="flex items-center justify-between">
+      <p className="min-[400px]:text-sm text-xs text-mytext font-body font-semibold">
+        Appearance
+      </p>
+      <div className="flex flex-col min-[500px]:flex-row gap-y-2  min-[500px]:items-center justify-between">
         <div className="flex items-center gap-x-2 px-1">
           {appearances.map((appearance) => {
             let ring = '';

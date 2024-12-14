@@ -30,12 +30,12 @@ const NoMilestones = () => {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="text-center max-w-[400px]"
+          className="text-center max-w-[250px] min-[500px]:max-w-[400px]"
         >
-          <p className="text-2xl text-mytext font-body font-bold">
+          <p className="text-lg md:text-2xl text-mytext font-body font-bold">
             No Milestones!
           </p>
-          <p className="text-sm text-mytextlight font-body font-semibold">
+          <p className="text-xs md:text-sm text-mytextlight font-body font-semibold">
             breakdown each of your features into milestones so you can keep
             track of your progress.
           </p>
@@ -54,7 +54,7 @@ const NoMilestones = () => {
               </Button>
             </motion.div>
           </DialogTrigger>
-          <DialogContent className="max-w-[400px]">
+          <DialogContent className="min-[450px]:max-w-[400px] max-w-[300px] rounded-lg">
             <DialogHeader className="">
               <DialogTitle className="text-base text-mytext font-body font-semibold">
                 Add a New Step
