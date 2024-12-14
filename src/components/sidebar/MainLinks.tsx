@@ -18,7 +18,9 @@ const MainLinks = () => {
           key={nav.name}
         >
           <SidebarMenuButton
-            className={`px-4 ${pathname === nav.href && 'bg-mybglight'}`}
+            className={`px-4 ${
+              pathname === nav.href && 'bg-mybglight text-mytext'
+            }`}
             tooltip={nav.name}
             asChild
           >
@@ -27,7 +29,7 @@ const MainLinks = () => {
               className="flex items-center gap-x-2 size-full"
             >
               <nav.Icon size={18} className="" />
-              <span className="text-xs font-body font-semibold">
+              <span className={`text-xs font-body font-semibold`}>
                 {nav.name}
               </span>
             </Link>

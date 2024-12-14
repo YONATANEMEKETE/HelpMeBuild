@@ -18,7 +18,7 @@ const ProjectCard = ({ project }: { project: ProjectState }) => {
   const toolsToDisplay = project.techs.slice(0, 5);
 
   return (
-    <div className="bg-mybg rounded-md overflow-clip  max-w-[300px] min-w-[300px] w-[300px] flex-auto h-fit border-x-2 border-b border-mybglight cursor-pointer">
+    <div className="bg-mybg rounded-md overflow-clip  max-w-[300px] min-w-[300px] w-[300px] flex-auto h-fit border-x border-b border-mytextlight/20 cursor-pointer">
       <div
         style={{ backgroundColor: project.color }}
         className="w-full h-1 bg-myaccentlight"

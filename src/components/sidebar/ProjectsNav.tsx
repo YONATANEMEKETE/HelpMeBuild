@@ -67,7 +67,7 @@ const ProjectsNav = () => {
             >
               <SidebarMenuButton
                 className={`px-4 ${
-                  pathname.includes(project.name) && 'bg-mybglight'
+                  pathname.includes(project.name) && 'bg-mybglight text-mytext'
                 }`}
                 asChild
               >
@@ -118,7 +118,7 @@ const ProjectsNav = () => {
       {projects.length > 3 && (
         <Link
           className="text-xs px-4 py-2 text-mytextlight font-body font-semibold hover:underline"
-          href={'home'}
+          href={'/dashboard/home'}
         >{`+${projects.length - 3} More`}</Link>
       )}
 

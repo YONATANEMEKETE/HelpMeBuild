@@ -12,7 +12,6 @@ import React from 'react';
 import CreateForm from './CreateForm';
 import { Plus } from 'lucide-react';
 import ProjectCard from './ProjectCard';
-import { projectcard } from '@/constant/constant';
 import CreateProjectForm from './CreateProjectForm';
 import { useDialog } from '@/hooks/use-dialog';
 import ProjectsListed from './ProjectsListed';
@@ -25,7 +24,7 @@ const ProjectList = () => {
   };
 
   return (
-    <section className="min-h-[93vh] px-10 pt-6 py-4 flex flex-col gap-y-4">
+    <section className="min-h-[93vh] max-w-[1300px] px-10 pt-6 py-4 flex flex-col gap-y-4">
       <div className="pb-6 border-b">
         <p className="text-base text-mytextlight font-body font-semibold">
           Welcome Back 🙌

@@ -14,7 +14,7 @@ const FeaturesList = ({ projectName }: Props) => {
   const features = currentProject?.features;
 
   return (
-    <section className="flex flex-col gap-2 w-full px-2">
+    <section className="flex flex-col gap-2 w-full p-4 grow rounded-lg bg-mybglight">
       {features?.map((feature) => {
         return (
           <FeatureCard
