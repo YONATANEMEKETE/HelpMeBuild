@@ -30,12 +30,11 @@ const VisualCard = ({ url, projectName }: Props) => {
       viewport={{ once: false, margin: '300px' }}
       className="group relative overflow-clip w-full aspect-video rounded-xl"
     >
-      <Image
+      <img
         src={url}
         alt="visual"
-        fill
         loading="lazy"
-        className="object-cover"
+        className="object-cover w-full h-full"
       />
       <Button
         variant={'outline'}
