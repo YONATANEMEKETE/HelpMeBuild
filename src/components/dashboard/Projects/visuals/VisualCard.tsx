@@ -34,7 +34,6 @@ const VisualCard = ({ url, projectName }: Props) => {
         src={url}
         alt="visual"
         fill
-        quality={100}
         loading="lazy"
         className="object-cover"
       />
