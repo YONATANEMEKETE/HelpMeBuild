@@ -54,7 +54,7 @@ const tabs = [
     link: 'visuals',
   },
   {
-    name: 'TechStacks',
+    name: 'Techs',
     link: 'techstacks',
   },
   {
