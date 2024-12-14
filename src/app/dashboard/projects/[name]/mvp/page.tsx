@@ -40,7 +40,7 @@ const Mvp = () => {
               New Feature
             </Button>
           </DialogTrigger>
-          <DialogContent className="min-[500px]:max-w-[400px] max-w-[300px] rounded-lg">
+          <DialogContent className="md:max-w-[400px] max-w-[300px] rounded-lg">
             <DialogHeader className="">
               <DialogTitle className="text-base text-mytext font-body font-semibold">
                 Add New feature

@@ -98,7 +98,7 @@ const AddVisualsForm = ({ closeDialog }: { closeDialog: () => void }) => {
             />
             <div className="text-center text-mytextlight font-body font-semibold">
               <div>
-                <p className="text-base font-bold">
+                <p className="text-sm md:text-base font-bold">
                   Drop Your Images here. or{' '}
                   <span className="text-myaccent">Browse</span>
                 </p>
@@ -151,7 +151,7 @@ const Preview = ({ files }: { files: File[] }) => {
       {twoPreviews.map((previewUrl) => (
         <div
           key={previewUrl}
-          className="w-[200px] h-[100px] rounded-md overflow-clip relative cursor-pointer hover:ring-2 hover:ring-myaccentlight/40 ring-offset-4"
+          className="md:w-[200px] w-full h-[100px] rounded-md overflow-clip relative cursor-pointer hover:ring-2 hover:ring-myaccentlight/40 ring-offset-4"
         >
           <Image
             src={previewUrl}
@@ -162,7 +162,7 @@ const Preview = ({ files }: { files: File[] }) => {
         </div>
       ))}
       {previewUrls.length > 2 && (
-        <div className="grid place-content-center w-[200px] h-[100px] rounded-md overflow-clip relative border text-sm text-mytextlight font-body font-semibold cursor-pointer group">
+        <div className="grid place-content-center md:w-[200px] w-full h-[100px] rounded-md overflow-clip relative border text-sm text-mytextlight font-body font-semibold cursor-pointer group">
           <p className="group-hover:text-mytext group-hover:underline">
             {`+${previewUrls.length - 2} More`}
           </p>

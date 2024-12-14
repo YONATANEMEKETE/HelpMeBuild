@@ -46,7 +46,7 @@ const MilestonesList = ({ projectName }: Props) => {
   return (
     <section className="flex flex-col gap-y-6 w-full grow">
       <div className="flex items-center justify-between px-2">
-        <p className="text-sm min-[500px]:text-base text-mytextlight font-body font-semibold">
+        <p className="text-sm md:text-base text-mytextlight font-body font-semibold">
           Milestones
         </p>
         <Dialog open={open} onOpenChange={setOpen}>
@@ -56,7 +56,7 @@ const MilestonesList = ({ projectName }: Props) => {
               Add Steps
             </Button>
           </DialogTrigger>
-          <DialogContent className="min-[450px]:max-w-[400px] max-w-[300px] rounded-lg">
+          <DialogContent className="md:max-w-[400px] max-w-[300px] rounded-lg">
             <DialogHeader className="">
               <DialogTitle className="text-base text-mytext font-body font-semibold">
                 Add a New Step

@@ -25,7 +25,7 @@ const ProjectsListed = () => {
         variants={variants}
         initial="initial"
         animate="animate"
-        className="flex flex-wrap gap-5 justify-center min-[620px]:justify-start"
+        className="flex flex-wrap gap-5 justify-center md:justify-start"
       >
         <LayoutGroup>
           <AnimatePresence>

@@ -51,7 +51,7 @@ const ProjectList = () => {
                 Create Project
               </Button>
             </DialogTrigger>
-            <DialogContent className="min-[500px]:max-w-[400px] max-w-[300px] rounded-lg">
+            <DialogContent className="md:max-w-[400px] max-w-[300px] rounded-lg">
               <DialogHeader className="mb-4">
                 <DialogTitle className="text-mytext font-body font-semibold">
                   Create a Project

@@ -57,9 +57,7 @@ const AddTechForm = ({ projectName, closeDialog }: Props) => {
               onClick={() => handleSelect(tech.name)}
               key={tech.name}
             >
-              <div
-                className={`min-[500px]:text-sm text-xs font-body font-semibold `}
-              >
+              <div className={`md:text-sm text-xs font-body font-semibold `}>
                 {tech.name}
               </div>
               {selected.includes(tech.name) && (

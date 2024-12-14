@@ -138,7 +138,7 @@ const ProjectsNav = () => {
         <DialogTrigger className="" asChild>
           <Button
             variant={'ghost'}
-            className="hidden min-[500px]:flex items-center justify-start gap-x-2 text-mytextlight hover:text-mytext"
+            className="hidden md:flex items-center justify-start gap-x-2 text-mytextlight hover:text-mytext"
           >
             <Plus />
             <p className="text-xs font-semibold font-body">New Project</p>

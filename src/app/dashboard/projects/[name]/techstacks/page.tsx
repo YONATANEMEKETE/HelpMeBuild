@@ -62,7 +62,7 @@ const Techs = () => {
               <Plus size={16} />
             </Button>
           </DialogTrigger>
-          <DialogContent className="min-[450px]:max-w-[500px] max-w-[350px] rounded-lg">
+          <DialogContent className="md:max-w-[500px] max-w-[350px] rounded-lg">
             <DialogTitle className="text-mytext font-body font-semibold">
               Choose the Techs you want to use
             </DialogTitle>

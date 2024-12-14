@@ -45,7 +45,7 @@ const UploadDialog = ({ buttonOutline }: Props) => {
           </Button>
         </motion.div>
       </DialogTrigger>
-      <DialogContent className="min-[450px]:max-w-[500px] max-w-[350px] rounded-lg">
+      <DialogContent className="md:max-w-[500px] max-w-[350px] rounded-lg">
         <DialogHeader className="p-1">
           <DialogTitle className="text-mytext font-body font-semibold">
             Add Visuals

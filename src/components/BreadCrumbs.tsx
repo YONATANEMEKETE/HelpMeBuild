@@ -31,7 +31,7 @@ const BreadCrumbs = () => {
                   <BreadcrumbLink asChild>
                     <Link
                       href={href}
-                      className="text-mytextlight text-xs min-[400px]:text-sm font-semibold font-body"
+                      className="text-mytextlight text-xs md:text-sm font-semibold font-body"
                     >
                       {linkName}
                     </Link>
