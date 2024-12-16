@@ -9,6 +9,7 @@ import { pinata } from '@/lib/pinata';
 import { toast } from 'sonner';
 import { useParams } from 'next/navigation';
 import useProjects from '@/stores/use-projects';
+import { motion } from 'framer-motion';
 
 const AddVisualsForm = ({ closeDialog }: { closeDialog: () => void }) => {
   const [files, setFiles] = useState<File[]>([]);

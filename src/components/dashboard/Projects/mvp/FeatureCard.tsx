@@ -44,7 +44,7 @@ const FeatureCard = ({ feature, projectName }: Props) => {
       <Sheet>
         <div
           className={`flex items-center gap-x-4 w-full px-4 py-3 border border-mytextlight/20 rounded-lg bg-mybg cursor-pointer shadow-lg ${
-            feature.implemented && 'opacity-70'
+            feature.implemented && 'opacity-50'
           }`}
         >
           <Checkbox

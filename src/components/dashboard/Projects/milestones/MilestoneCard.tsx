@@ -48,9 +48,7 @@ const MilestoneCard = ({ milestone, projectName }: Props) => {
       layout
       variants={variants}
       exit={{ opacity: 0, scale: 0.75 }}
-      className={`min-[500px]:px-4 px-2 py-2 rounded-lg border bg-mybglight cursor-pointer shadow-sm flex items-center justify-between ${
-        milestone.completed && 'opacity-50'
-      }`}
+      className={`md:px-4 px-2 py-2 rounded-lg border bg-mybglight cursor-pointer shadow-sm flex items-center justify-between`}
     >
       <div className="flex items-center gap-x-4">
         <Checkbox
@@ -63,7 +61,11 @@ const MilestoneCard = ({ milestone, projectName }: Props) => {
           )}
         />
         <div className="flex items-center gap-x-8">
-          <p className="text-sm text-mytextlight font-body font-semibold">
+          <p
+            className={`text-sm text-mytextlight font-body font-semibold ${
+              milestone.completed && 'line-through'
+            }`}
+          >
             {milestone.name}
           </p>
           {milestone.completed ? (
