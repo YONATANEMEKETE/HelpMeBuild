@@ -28,7 +28,7 @@ const VisualCard = ({ url, projectName }: Props) => {
       initial={{ scale: 0.7, rotateX: 25 }}
       whileInView={{ scale: 1, rotateX: 0 }}
       viewport={{ once: false, margin: '300px' }}
-      className="group relative overflow-clip w-full aspect-video rounded-xl"
+      className="group relative overflow-clip w-full h-auto rounded-xl"
     >
       <img
         src={url}
