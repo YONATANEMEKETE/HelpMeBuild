@@ -6,6 +6,7 @@ import { Button } from '../ui/button';
 import { GitBranch } from 'lucide-react';
 import github from '../../../public/github.svg';
 import { Separator } from '../ui/separator';
+import { DashboardButton } from './DashboardButton';
 
 const Nav = () => {
   return (
@@ -40,12 +41,10 @@ const Nav = () => {
         </Link>
         <Separator orientation="vertical" className="h-6" />
         <Link href={'/dashboard'}>
-          <Button
-            variant={'outline'}
-            className="rounded-full text-sm text-mytext font-body font-semibold bg-mybg hover:bg-mybg hover:text-mytextlight"
-          >
-            Dashboard
-          </Button>
+          <DashboardButton
+            text="Dashboard"
+            className="text-sm text-mytext font-body font-semibold"
+          />
         </Link>
       </div>
     </nav>
