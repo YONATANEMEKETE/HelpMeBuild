@@ -18,13 +18,13 @@ const Nav = () => {
         <Image
           src={logo}
           alt="logo image"
-          className="object-contain size-10 rounded-lg"
+          className="object-contain size-8 md:size-10 rounded-lg"
         />
-        <p className="text-mytext text-2xl font-body font-bold">
+        <p className="text-mytext text-lg md:text-2xl font-body font-bold">
           Snap<span className="text-myaccent">Build</span>.
         </p>
       </Link>
-      <div className="flex items-center gap-x-4">
+      <div className="flex items-center gap-x-1 md:gap-x-4">
         <Link
           target="_blank"
           href={'https://github.com/YONATANEMEKETE/SnapBuild'}
@@ -33,9 +33,9 @@ const Nav = () => {
           <Image
             src={github}
             alt="github logo"
-            className="object-contain size-6"
+            className="object-contain size-4 md:size-6"
           />
-          <p className="text-sm text-mytext font-body font-semibold group-hover:text-mytextlight">
+          <p className="text-xs md:text-sm text-mytext font-body font-semibold group-hover:text-mytextlight">
             Star It
           </p>
         </Link>
@@ -43,7 +43,7 @@ const Nav = () => {
         <Link href={'/dashboard'}>
           <DashboardButton
             text="Dashboard"
-            className="text-sm text-mytext font-body font-semibold"
+            className="text-xs md:text-sm text-mytext font-body font-semibold"
           />
         </Link>
       </div>

@@ -9,7 +9,7 @@ import { ReactLenis } from '../lib/lenis';
 
 export default function Home() {
   return (
-    <div className="relative overflow-clip pb-16">
+    <div className="relative overflow-clip pb-10 md:pb-16">
       <ReactLenis root>
         <GridPattern
           width={30}
@@ -18,7 +18,7 @@ export default function Home() {
           y={-1}
           strokeDasharray={'4 2'}
           className={cn(
-            '[mask-image:radial-gradient(700px_circle_at_center,white,transparent)] max-h-screen'
+            '[mask-image:radial-gradient(700px_circle_at_center,white,transparent)] max-h-[70vh] md:max-h-screen'
           )}
         />
         <Hero />

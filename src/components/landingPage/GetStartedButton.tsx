@@ -9,13 +9,13 @@ export function GetStartedButton({ text = 'Hover me' }) {
       transition={{ duration: 1 }}
       style={{ transform: 'none' }}
     >
-      <button className="group relative inline-block cursor-pointer rounded-full bg-mytext p-px font-semibold leading-6 text-mybg no-underline shadow-2xl shadow-myaccentlight">
+      <button className="group relative inline-block cursor-pointer rounded-full bg-mytext p-px text-sm md:text-base  font-semibold leading-6 text-mybg no-underline shadow-2xl shadow-myaccentlight">
         <span className="absolute inset-0 overflow-hidden rounded-full">
           <span className="absolute inset-0 rounded-full bg-[image:radial-gradient(75%_100%_at_50%_0%,rgba(56,189,248,0.6)_0%,rgba(56,189,248,0)_75%)] opacity-0 transition-opacity duration-500 group-hover:opacity-100">
             {' '}
           </span>{' '}
         </span>
-        <div className="relative z-10 flex items-center space-x-2 rounded-full bg-mytext/50 px-6 py-3 ring-1 ring-white/10">
+        <div className="relative z-10 flex items-center space-x-1 md:space-x-2 rounded-full bg-mytext/50 px-3 md:px-6 py-1.5 md:py-3 ring-1 ring-white/10">
           <span>{text}</span>
           <svg
             xmlns="http://www.w3.org/2000/svg"

@@ -8,7 +8,7 @@ import { github, linkedin, telegram } from '@/constant/icons';
 const Footer = () => {
   return (
     <Container className="pt-20 px-10 flex items-center flex-col gap-y-2">
-      <p className="text-sm text-mytext font-body font-extrabold">
+      <p className="text-xs sm:text-sm text-mytext font-body font-extrabold">
         YONATANE MEKETE
       </p>
       <div className="flex items-center gap-x-2">

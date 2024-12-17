@@ -12,7 +12,7 @@ const HeroContent = () => {
   return (
     <div className="w-full min-h-screen pt-20 flex flex-col items-center gap-y-32">
       <div className="flex flex-col items-center gap-y-10">
-        <div className="space-y-4 flex flex-col items-center">
+        <div className="space-y-2 md:space-y-4 flex flex-col items-center">
           <div className="flex flex-col items-center">
             <div className="flex items-center gap-x-2">
               {/* <p className="text-6xl text-mytext font-body font-bold text-center">
@@ -20,20 +20,20 @@ const HeroContent = () => {
               </p> */}
               <BlurIn
                 word="Build"
-                className="text-6xl text-mytext font-body font-bold"
+                className="text-3xl sm:text-5xl md:text-6xl text-mytext font-body font-bold"
               />
-              <div className="w-[190px]">
+              <div className="w-[93px] sm:w-[150px] md:w-[190px]">
                 <WordRotate
                   duration={5000}
                   words={['Better', 'Faster', 'Easier']}
-                  className="text-6xl text-mytext font-body font-bold"
+                  className="text-3xl sm:text-5xl md:text-6xl text-mytext font-body font-bold"
                 />
               </div>
             </div>
             {/* subtitle */}
             <BlurIn
               word="One Step at a Time"
-              className="text-6xl text-myaccentdark font-body font-extrabold"
+              className="text-3xl sm:text-5xl md:text-6xl text-myaccentdark font-body font-extrabold"
             />
             {/* <p className="text-6xl text-myaccentdark font-body font-extrabold">
               One Step at a Time
@@ -44,7 +44,7 @@ const HeroContent = () => {
             initial={{ opacity: 0, y: 20, filter: 'blur(5px)' }}
             animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
             transition={{ duration: 0.5 }}
-            className="max-w-[600px] text-center text-mytextlight text-base font-body font-semibold"
+            className="max-w-[300px] md:max-w-[600px] text-center text-mytextlight text-xs md:text-base font-body font-semibold"
           >
             Plan smarter, stay organized, and bring your ideas to life with our
             all-in-one project planning tool for{' '}

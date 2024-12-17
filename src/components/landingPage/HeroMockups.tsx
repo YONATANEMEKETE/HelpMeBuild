@@ -11,7 +11,7 @@ const HeroMockups = () => {
       initial={{ opacity: 0, y: -20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 1, delay: 0.5 }}
-      className="relative w-[80%] aspect-video rounded-xl bg-mybg overflow-visible shadow-[0px_14px_99px_-25px_#228be6]"
+      className="relative w-[90%] md:w-[80%] aspect-video rounded-xl bg-mybg overflow-x-visible shadow-[0px_14px_99px_-25px_#228be6]"
     >
       <Image
         src={heroBrowserMockup}
@@ -23,8 +23,7 @@ const HeroMockups = () => {
       <Image
         src={heroMobileMockup}
         alt="mobile mockup"
-        height={500}
-        className="absolute z-20 top-[20%] -right-[10%] w-auto"
+        className="absolute z-20 top-[15%] -right-[10%] w-auto h-[200px] sm:h-[400px] md:h-[500px]"
       />
       <BorderBeam
         colorFrom="hsl(229, 75%, 53%)"
