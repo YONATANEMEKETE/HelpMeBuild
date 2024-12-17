@@ -19,6 +19,7 @@ const HeroMockups = () => {
         fill={true}
         className="object-cover"
       />
+
       <Image
         src={heroMobileMockup}
         alt="mobile mockup"

@@ -1,4 +1,5 @@
 import DotPattern from '@/components/DotPatterns';
+import Features from '@/components/landingPage/Features';
 import Hero from '@/components/landingPage/Hero';
 import { Button } from '@/components/ui/button';
 import GridPattern from '@/components/ui/grid-pattern';
@@ -19,6 +20,7 @@ export default function Home() {
         )}
       />
       <Hero />
+      <Features />
     </div>
   );
 }
