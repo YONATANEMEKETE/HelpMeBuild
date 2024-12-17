@@ -20,6 +20,9 @@ import jest from '../../public/jest-snapshot-svgrepo-com.svg';
 import cypress from '../../public/cypress-svgrepo-com.svg';
 import tailwind from '../../public/tailwindcss-icon-svgrepo-com.svg';
 import mui from '../../public/material-ui-svgrepo-com.svg';
+import github from '../../public/github-svgrepo-com.svg';
+import linkedin from '../../public/linkedin-round-svgrepo-com.svg';
+import telegram from '../../public/telegram-svgrepo-com.svg';
 
 export {
   react,
@@ -44,4 +47,7 @@ export {
   cypress,
   tailwind,
   mui,
+  github,
+  linkedin,
+  telegram,
 };

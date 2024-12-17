@@ -1,5 +1,6 @@
 import DotPattern from '@/components/DotPatterns';
 import Features from '@/components/landingPage/Features';
+import Footer from '@/components/landingPage/Footer';
 import Hero from '@/components/landingPage/Hero';
 import { Button } from '@/components/ui/button';
 import GridPattern from '@/components/ui/grid-pattern';
@@ -8,7 +9,7 @@ import Link from 'next/link';
 
 export default function Home() {
   return (
-    <div className="relative overflow-clip">
+    <div className="relative overflow-clip pb-16">
       <GridPattern
         width={30}
         height={30}
@@ -20,7 +21,9 @@ export default function Home() {
         )}
       />
       <Hero />
-      <Features />
+      <Footer />
+      {/* rebuild it again. may be */}
+      {/* <Features />  */}
     </div>
   );
 }
