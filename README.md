@@ -28,7 +28,7 @@ We welcome contributions to SnapBuild! To get started:
 - Open a pull request.
 
 ## 🖼️ Preview
-Check out the live demo: [QuickPrep Demo](https://snap-build.vercel.app).
+Check out the live demo: [SnapBuild Demo](https://snap-build.vercel.app).
 
 ## 📧 Contact
 Feel free to reach out if you have any questions or suggestions:
