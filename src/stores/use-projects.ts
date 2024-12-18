@@ -19,7 +19,7 @@ export interface ProjectState {
   name: string;
   color: string;
   description: string;
-  techs: string[] | [];
+  techs: string[];
   createdAt: string;
   features: featureState[] | [];
   milestones: milestoneState[] | [];

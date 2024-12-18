@@ -35,7 +35,15 @@ const AddTechForm = ({ projectName, closeDialog }: Props) => {
       return selected.includes(t);
     });
     if (alreadyExists) {
-      toast.error('you are trying to add a tech that already exists');
+      const newAdd = selected.filter((t) => !currentProject?.techs.includes(t));
+      addTechs(projectName, newAdd);
+
+      if (newAdd.length > 0) {
+        toast.success('added new techs successfully');
+      } else {
+        toast.success('techs up to date.');
+      }
+      closeDialog();
     } else {
       addTechs(projectName, selected);
       toast.success(`${selected.length} techs added successfuly`);
