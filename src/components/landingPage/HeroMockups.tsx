@@ -17,7 +17,7 @@ const HeroMockups = () => {
         src={heroBrowserMockup}
         alt="browser mockup"
         fill={true}
-        className="object-cover"
+        className=""
       />
 
       <Image
