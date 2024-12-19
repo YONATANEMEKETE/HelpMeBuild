@@ -45,6 +45,7 @@ interface storeAction {
   removeMilestone: (projectName: string, milestone: string) => void;
   toggleMilestone: (projectName: string, milestone: string) => void;
   reorderMilestones: (projectName: string) => void;
+  reorderFeatures: (projectName: string) => void;
   reset: () => void;
 }
 
@@ -246,6 +247,21 @@ const useProjects = create<storeState & storeAction>()(
                 ...project,
                 milestones: project.milestones.sort((a, b) => {
                   return Number(a.completed) - Number(b.completed);
+                }),
+              };
+            }
+            return project;
+          }),
+        }));
+      },
+      reorderFeatures: (projectName) => {
+        Set((state) => ({
+          projects: state.projects.map((project) => {
+            if (project.name === projectName) {
+              return {
+                ...project,
+                features: project.features.sort((a, b) => {
+                  return Number(a.implemented) - Number(b.implemented);
                 }),
               };
             }

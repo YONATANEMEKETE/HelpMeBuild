@@ -27,7 +27,8 @@ interface Props {
 }
 
 const FeatureCard = ({ feature, projectName }: Props) => {
-  const { removeFeature, checkFeature, unCheckFeature } = useProjects();
+  const { removeFeature, checkFeature, unCheckFeature, reorderFeatures } =
+    useProjects();
 
   const deadline = formateDateForTasks(feature.dueDate);
   const passedDueDate = handleDueDate(feature.dueDate);
@@ -53,8 +54,10 @@ const FeatureCard = ({ feature, projectName }: Props) => {
             onCheckedChange={(checked) => {
               if (checked) {
                 checkFeature(projectName, feature.name);
+                reorderFeatures(projectName);
               } else if (!checked) {
                 unCheckFeature(projectName, feature.name);
+                reorderFeatures(projectName);
               }
             }}
             className={cn(
