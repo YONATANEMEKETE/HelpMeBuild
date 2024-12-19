@@ -9,7 +9,7 @@ import {
 import { cn } from '@/lib/utils';
 import { Clock, MoreHorizontal, Trash2 } from 'lucide-react';
 import React from 'react';
-import { Completed, InProgress } from '../StatusBadge';
+import { Completed, Expired, InProgress } from '../StatusBadge';
 import useProjects, { featureState } from '@/stores/use-projects';
 import {
   DropdownMenu,
@@ -18,7 +18,7 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 import { toast } from 'sonner';
-import { formateDateForTasks } from '@/lib/date';
+import { formateDateForTasks, handleDueDate } from '@/lib/date';
 import { motion } from 'framer-motion';
 
 interface Props {
@@ -30,6 +30,7 @@ const FeatureCard = ({ feature, projectName }: Props) => {
   const { removeFeature, checkFeature, unCheckFeature } = useProjects();
 
   const deadline = formateDateForTasks(feature.dueDate);
+  const passedDueDate = handleDueDate(feature.dueDate);
 
   const variants = {
     initial: { opacity: 0, scale: 0.9 },
@@ -73,10 +74,16 @@ const FeatureCard = ({ feature, projectName }: Props) => {
                 {feature.implemented ? (
                   <Completed />
                 ) : (
-                  <div className="hidden min-[500px]:flex items-center gap-x-4 text-xs text-mytextlight font-body font-semibold">
-                    <Clock size={16} />
-                    <p>{deadline}</p>
-                  </div>
+                  <>
+                    {passedDueDate ? (
+                      <Expired />
+                    ) : (
+                      <div className="hidden min-[500px]:flex items-center gap-x-4 text-xs text-mytextlight font-body font-semibold">
+                        <Clock size={16} />
+                        <p>{deadline}</p>
+                      </div>
+                    )}
+                  </>
                 )}
               </div>
               <DropdownMenu>
@@ -117,13 +124,23 @@ const FeatureCard = ({ feature, projectName }: Props) => {
                 <p className="text-sm text-mytextlight font-body font-semibold">
                   Status
                 </p>
-                {feature.implemented ? <Completed /> : <InProgress />}
+                {feature.implemented ? (
+                  <Completed />
+                ) : passedDueDate ? (
+                  <Expired />
+                ) : (
+                  <InProgress />
+                )}
               </div>
               <div className="flex items-center gap-x-4">
                 <p className="text-sm text-mytextlight font-body font-semibold">
                   Due Date
                 </p>
-                <p className="text-sm text-mytextlight/80 font-body font-semibold">
+                <p
+                  className={`text-sm text-mytextlight/80 font-body font-semibold ${
+                    feature.implemented || passedDueDate ? 'line-through' : ''
+                  }`}
+                >
                   {deadline}
                 </p>
               </div>
