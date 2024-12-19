@@ -19,10 +19,10 @@ import useProjects, {
 } from '@/stores/use-projects';
 import { Clock, MoreHorizontal, Trash2 } from 'lucide-react';
 import React from 'react';
-import { Completed, InProgress } from '../StatusBadge';
+import { Completed, Expired, InProgress } from '../StatusBadge';
 import { toast } from 'sonner';
 import { Separator } from '@radix-ui/react-select';
-import { formateDateForTasks } from '@/lib/date';
+import { formateDateForTasks, handleDueDate } from '@/lib/date';
 import { motion } from 'framer-motion';
 
 interface Props {
@@ -34,6 +34,7 @@ const MilestoneCard = ({ milestone, projectName }: Props) => {
   const { removeMilestone, checkFeature, unCheckFeature, toggleMilestone } =
     useProjects();
   const deadline = formateDateForTasks(milestone.dueDate);
+  const passedDuaDate = handleDueDate(milestone.dueDate);
 
   const variants = {
     initial: { opacity: 0, scale: 0.9 },
@@ -72,16 +73,22 @@ const MilestoneCard = ({ milestone, projectName }: Props) => {
             <Completed />
           ) : (
             <div className="hidden min-[500px]:flex items-center gap-x-4">
-              <InProgress />
-              <div
-                className="flex items-center gap-x-2
+              {passedDuaDate ? (
+                <Expired />
+              ) : (
+                <>
+                  <InProgress />
+                  <div
+                    className="flex items-center gap-x-2
               "
-              >
-                <Clock size={12} className="text-mytextlight" />
-                <p className="text-xs text-mytextlight font-body font-semibold">
-                  {deadline}
-                </p>
-              </div>
+                  >
+                    <Clock size={12} className="text-mytextlight" />
+                    <p className="text-xs text-mytextlight font-body font-semibold">
+                      {deadline}
+                    </p>
+                  </div>
+                </>
+              )}
             </div>
           )}
         </div>

@@ -79,3 +79,11 @@ export function formateDateForFeatures(date: Date): string {
     return `${month} ${day}, ${year} has been set`;
   }
 }
+
+export const handleDueDate = (duedate: Date) => {
+  const now = new Date();
+  if (duedate < now) {
+    return true;
+  }
+  return false;
+};

@@ -19,4 +19,12 @@ const Completed = () => {
   );
 };
 
-export { InProgress, Completed };
+const Expired = () => {
+  return (
+    <div className="px-2 py-1 rounded-full bg-red-100 text-xs text-red-500 font-body font-semibold flex items-center gap-x-2">
+      Due Date Passed
+    </div>
+  );
+};
+
+export { InProgress, Completed, Expired };
