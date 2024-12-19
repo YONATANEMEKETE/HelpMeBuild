@@ -23,7 +23,7 @@ import { Completed, Expired, InProgress } from '../StatusBadge';
 import { toast } from 'sonner';
 import { Separator } from '@radix-ui/react-select';
 import { formateDateForTasks, handleDueDate } from '@/lib/date';
-import { motion } from 'framer-motion';
+import { motion, Reorder } from 'framer-motion';
 
 interface Props {
   milestone: milestoneState;
@@ -31,8 +31,7 @@ interface Props {
 }
 
 const MilestoneCard = ({ milestone, projectName }: Props) => {
-  const { removeMilestone, checkFeature, unCheckFeature, toggleMilestone } =
-    useProjects();
+  const { removeMilestone, reorderMilestones, toggleMilestone } = useProjects();
   const deadline = formateDateForTasks(milestone.dueDate);
   const passedDuaDate = handleDueDate(milestone.dueDate);
 
@@ -56,6 +55,7 @@ const MilestoneCard = ({ milestone, projectName }: Props) => {
           checked={milestone.completed}
           onCheckedChange={(checked) => {
             toggleMilestone(projectName, milestone.name);
+            reorderMilestones(projectName);
           }}
           className={cn(
             'data-[state=checked]:bg-myaccent border-mytextlight rounded-full data-[state=checked]:border-myaccent'

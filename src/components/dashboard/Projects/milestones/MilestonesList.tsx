@@ -1,4 +1,4 @@
-import useProjects from '@/stores/use-projects';
+import useProjects, { milestoneState } from '@/stores/use-projects';
 import React, { useState } from 'react';
 import FeatureCard from '../mvp/FeatureCard';
 import MilestoneCard from './MilestoneCard';
